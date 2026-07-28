@@ -1,0 +1,16 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+
+# ビルド成果物 (.app バンドル)
+dist/
+
+# Xcode
+DerivedData/
+xcuserdata/
+*.xcodeproj
+*.xcworkspace
+
+# macOS
+.DS_Store
