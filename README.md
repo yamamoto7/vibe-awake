@@ -4,6 +4,14 @@
   <p>AI コーディングセッションが動いている間だけ、Mac を寝かせない。</p>
 </div>
 
+```bash
+brew tap yamamoto7/tap
+brew install --cask vibe-awake
+```
+
+> [!NOTE]
+> 初回起動時に管理者パスワードを一度だけ求められます。macOS の仕様上、蓋を閉じたときのスリープを止めるのに必要です → [初回セットアップ](#初回セットアップ)
+
 ## これは何?
 
 Claude Code や Codex CLI に長い作業を任せて席を離れると、Mac がスリープして作業が止まってしまいます。Vibe Awake はメニューバーに常駐して、**セッションが実際に応答を生成している間だけ**スリープを防ぎます。**MacBook の蓋を閉じても止まりません。**
@@ -21,11 +29,25 @@ Claude Code や Codex CLI に長い作業を任せて席を離れると、Mac �
 
 ヘッドレス実行 (`claude -p` / `codex exec`) は対象外です。
 
-## 動作環境
-
-macOS 13 (Ventura) 以降
-
 ## インストール
+
+動作環境は **macOS 13 (Ventura) 以降** です。
+
+### Homebrew
+
+```bash
+brew tap yamamoto7/tap
+brew install --cask vibe-awake
+```
+
+アップデートとアンインストールも Homebrew から行えます。
+
+```bash
+brew upgrade --cask vibe-awake
+brew uninstall --cask vibe-awake   # ヘルパーもまとめて削除されます
+```
+
+### 手動
 
 [Releases](https://github.com/yamamoto7/vibe-awake/releases) から `.dmg` をダウンロードし、`Vibe Awake.app` を `アプリケーション` フォルダにドラッグしてください。
 
