@@ -29,7 +29,8 @@ if [ ! -d "$APP_DIR" ]; then
 fi
 
 # Refuse to submit an ad-hoc signature; it would only fail after a long wait.
-if ! codesign -dv "$APP_DIR" 2>&1 | grep -q "Authority=Developer ID Application"; then
+# --verbose=2 is required: plain -dv does not print the Authority chain at all.
+if ! codesign -d --verbose=2 "$APP_DIR" 2>&1 | grep -q "Authority=Developer ID Application"; then
   echo "error: $APP_DIR is not Developer ID signed. Run ./Scripts/build_app.sh --release." >&2
   exit 1
 fi
