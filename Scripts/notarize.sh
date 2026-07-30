@@ -29,11 +29,19 @@ if [ ! -d "$APP_DIR" ]; then
 fi
 
 # Refuse to submit an ad-hoc signature; it would only fail after a long wait.
-# --verbose=2 is required: plain -dv does not print the Authority chain at all.
-if ! codesign -d --verbose=2 "$APP_DIR" 2>&1 | grep -q "Authority=Developer ID Application"; then
-  echo "error: $APP_DIR is not Developer ID signed. Run ./Scripts/build_app.sh --release." >&2
-  exit 1
-fi
+#
+# The output is captured rather than piped into grep. Under `set -o pipefail` a `grep -q`
+# closes the pipe as soon as it matches, codesign dies of SIGPIPE (141), and pipefail
+# reports the whole pipeline as failed -- so the check rejected every bundle, including
+# correctly signed ones. --verbose=2 is also required: plain -dv omits the Authority chain.
+SIGNING_INFO=$(codesign -d --verbose=2 "$APP_DIR" 2>&1 || true)
+case "$SIGNING_INFO" in
+  *"Authority=Developer ID Application"*) ;;
+  *)
+    echo "error: $APP_DIR is not Developer ID signed. Run ./Scripts/build_app.sh --release." >&2
+    exit 1
+    ;;
+esac
 
 echo "==> [1/5] Submitting the app for notarization (this can take a few minutes)"
 rm -f "$ZIP_PATH"
