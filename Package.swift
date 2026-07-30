@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "SleepBlocker",
+    name: "VibeAwake",
     platforms: [.macOS(.v13)],
     targets: [
         .executableTarget(
-            name: "SleepBlocker",
-            path: "Sources/SleepBlocker"
+            name: "VibeAwake",
+            path: "Sources/VibeAwake"
         )
     ]
 )

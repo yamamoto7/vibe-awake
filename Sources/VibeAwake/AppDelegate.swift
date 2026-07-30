@@ -9,9 +9,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var settingsWindow: NSWindow?
 
     private let claudeMonitor = ClaudeSessionMonitor()
+    private let codexMonitor = CodexSessionMonitor()
     private let sleepController = SleepController()
     private lazy var appState = AppState(
         claudeMonitor: claudeMonitor,
+        codexMonitor: codexMonitor,
         sleepController: sleepController
     )
     private var cancellables = Set<AnyCancellable>()
@@ -25,7 +27,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let hosting = NSHostingController(
             rootView: DashboardView(
-                claudeMonitor: claudeMonitor,
                 appState: appState,
                 onOpenSettings: { [weak self] in self?.openSettings() }
             )
@@ -52,19 +53,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             .store(in: &cancellables)
 
         claudeMonitor.start()
+        codexMonitor.start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
         claudeMonitor.stop()
+        codexMonitor.stop()
         appState.shutdown()
     }
 
     private func updateIcon(isBlocking: Bool, helperInstalled: Bool) {
         guard let button = statusItem.button else { return }
-        button.image = NSImage(
-            systemSymbolName: isBlocking ? "moon.zzz.fill" : "moon.zzz",
-            accessibilityDescription: "Sleep Blocker"
-        )
+        // Without the helper the app blocks nothing at all, so the icon says so outright
+        // rather than showing a moon that suggests it is on duty.
+        let symbol = helperInstalled
+            ? (isBlocking ? "moon.zzz.fill" : "moon.zzz")
+            : "exclamationmark.triangle.fill"
+        button.image = NSImage(systemSymbolName: symbol, accessibilityDescription: "Sleep Blocker")
         button.contentTintColor = helperInstalled ? nil : .systemOrange
     }
 
@@ -74,7 +79,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         if settingsWindow == nil {
             let hosting = NSHostingController(
-                rootView: SettingsView(claudeMonitor: claudeMonitor, appState: appState)
+                rootView: SettingsView(appState: appState)
             )
             let window = NSWindow(contentViewController: hosting)
             window.title = "設定"

@@ -2,21 +2,23 @@ import Foundation
 import Combine
 import SwiftUI
 
-/// Bridges Claude Code session state to the sleep controller, and exposes the privileged
-/// helper actions plus the summary the dashboard and settings windows render.
+/// Bridges agent session state to the sleep controller, and exposes the privileged helper
+/// actions plus the summary the dashboard and settings windows render.
 final class AppState: ObservableObject {
     private static let enabledDefaultsKey = "isSleepBlockingEnabled"
     private static let waitingDefaultsKey = "treatWaitingAsActive"
 
     @Published private(set) var isBlockingSleep = false
     @Published private(set) var helperInstalled = HelperInstaller.isInstalled()
+    /// An older helper is installed and can't understand the current state format.
+    @Published private(set) var helperNeedsUpdate = HelperInstaller.needsUpdate()
     @Published var installError: String?
     @Published private(set) var isInstalling = false
 
     @Published private(set) var summary = SessionSummary()
     /// The sessions currently holding sleep open, for naming them in the UI.
-    @Published private(set) var activeSessions: [ClaudeSession] = []
-    @Published private(set) var isUsingProcessFallback = false
+    @Published private(set) var activeSessions: [AgentSession] = []
+    @Published private(set) var isUsingClaudeProcessFallback = false
 
     /// Master on/off switch, persisted across launches and editable from Settings.
     @Published var isEnabled: Bool {
@@ -37,10 +39,15 @@ final class AppState: ObservableObject {
     }
 
     private let sleepController: SleepController
-    private var sessions: [ClaudeSession] = []
+    private var claudeSessions: [AgentSession] = []
+    private var codexSessions: [AgentSession] = []
     private var cancellables = Set<AnyCancellable>()
 
-    init(claudeMonitor: ClaudeSessionMonitor, sleepController: SleepController) {
+    init(
+        claudeMonitor: ClaudeSessionMonitor,
+        codexMonitor: CodexSessionMonitor,
+        sleepController: SleepController
+    ) {
         self.sleepController = sleepController
 
         let defaults = UserDefaults.standard
@@ -50,7 +57,15 @@ final class AppState: ObservableObject {
         claudeMonitor.$sessions
             .sink { [weak self] sessions in
                 guard let self else { return }
-                self.sessions = sessions
+                self.claudeSessions = sessions
+                self.refreshBlockingState()
+            }
+            .store(in: &cancellables)
+
+        codexMonitor.$sessions
+            .sink { [weak self] sessions in
+                guard let self else { return }
+                self.codexSessions = sessions
                 self.refreshBlockingState()
             }
             .store(in: &cancellables)
@@ -58,41 +73,53 @@ final class AppState: ObservableObject {
         claudeMonitor.$isUsingProcessFallback
             .sink { [weak self] fallback in
                 guard let self else { return }
-                self.isUsingProcessFallback = fallback
+                self.isUsingClaudeProcessFallback = fallback
                 self.refreshBlockingState()
             }
             .store(in: &cancellables)
     }
 
-    func countsAsActive(_ status: ClaudeSession.Status) -> Bool {
-        switch status {
-        case .busy, .shell:
+    func countsAsActive(_ activity: SessionActivity) -> Bool {
+        switch activity {
+        case .working, .unknown:
             return true
-        case .waiting:
+        case .waitingForApproval:
             return treatWaitingAsActive
         case .idle:
             return false
-        case .unknown:
-            // An older Claude Code that doesn't report status. Assume the worst and keep the
-            // machine awake rather than risk sleeping mid-task.
-            return true
+        }
+    }
+
+    func sessions(for tool: AgentTool) -> [AgentSession] {
+        switch tool {
+        case .claudeCode: return claudeSessions
+        case .codex: return codexSessions
         }
     }
 
     private func refreshBlockingState() {
+        let all = claudeSessions + codexSessions
+
         var counts = SessionSummary()
-        for session in sessions {
-            switch session.status {
-            case .busy, .shell, .unknown: counts.working += 1
-            case .waiting: counts.waiting += 1
+        for session in all {
+            switch session.activity {
+            case .working, .unknown: counts.working += 1
+            case .waitingForApproval: counts.waiting += 1
             case .idle: counts.idle += 1
             }
         }
         summary = counts
-        activeSessions = sessions.filter { countsAsActive($0.status) }
+        activeSessions = all.filter { countsAsActive($0.activity) }
 
-        let anyActive = sessions.isEmpty ? isUsingProcessFallback : !activeSessions.isEmpty
-        let shouldBlock = isEnabled && anyActive
+        // The Claude fallback stands in for sessions we couldn't read at all, so it only
+        // applies when that tool reported nothing.
+        let claudeFallbackActive = claudeSessions.isEmpty && isUsingClaudeProcessFallback
+        let anyActive = !activeSessions.isEmpty || claudeFallbackActive
+
+        // Without the helper only idle sleep could be blocked -- closing the lid would still
+        // sleep the Mac, which is the entire point of this app. Rather than half-work in a way
+        // that looks like it works, do nothing at all until setup is done.
+        let shouldBlock = isEnabled && helperInstalled && anyActive
 
         if shouldBlock {
             sleepController.activate()
@@ -110,7 +137,7 @@ final class AppState: ObservableObject {
             self.isInstalling = false
             switch result {
             case .success:
-                self.helperInstalled = HelperInstaller.isInstalled()
+                self.refreshHelperState()
             case .failure(let error):
                 self.installError = error.localizedDescription
             }
@@ -125,11 +152,17 @@ final class AppState: ObservableObject {
             self.isInstalling = false
             switch result {
             case .success:
-                self.helperInstalled = HelperInstaller.isInstalled()
+                self.refreshHelperState()
             case .failure(let error):
                 self.installError = error.localizedDescription
             }
         }
+    }
+
+    private func refreshHelperState() {
+        helperInstalled = HelperInstaller.isInstalled()
+        helperNeedsUpdate = HelperInstaller.needsUpdate()
+        refreshBlockingState()
     }
 
     func shutdown() {
