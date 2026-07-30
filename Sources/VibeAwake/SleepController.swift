@@ -55,7 +55,12 @@ final class SleepController {
             if let last = lastWriteTime, now.timeIntervalSince(last) < heartbeatInterval { return }
         }
 
-        guard HelperInstaller.isInstalled() else { return }
+        // Gate on the daemon existing at all, not on it matching the current version. A helper
+        // from an older build still holds `disablesleep` on, and refusing to write would leave
+        // no way to tell it to stop -- the app would report "setup required" while the Mac
+        // silently never slept. An older helper reading this format finds nothing it
+        // understands and turns the flag off, which is exactly what is wanted here.
+        guard HelperInstaller.daemonPresent else { return }
 
         let pid = ProcessInfo.processInfo.processIdentifier
         let text = "desired=\(desired)\npid=\(pid)\nts=\(Int(now.timeIntervalSince1970))\n"

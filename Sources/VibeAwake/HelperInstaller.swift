@@ -58,7 +58,7 @@ enum HelperInstaller {
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    private static var daemonPresent: Bool {
+    static var daemonPresent: Bool {
         FileManager.default.fileExists(atPath: plistPath)
     }
 
@@ -84,24 +84,24 @@ enum HelperInstaller {
         shellScript: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        let tempURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("vibeawake-setup-\(UUID().uuidString).sh")
-
-        do {
-            try shellScript.write(to: tempURL, atomically: true, encoding: .utf8)
-        } catch {
-            completion(.failure(InstallError.scriptWriteFailed))
-            return
-        }
-
-        let escapedPath = tempURL.path.replacingOccurrences(of: "\"", with: "\\\"")
-        let source = "do shell script \"/bin/bash \\\"\(escapedPath)\\\"\" with administrator privileges"
+        // The script is passed inline, base64-encoded, rather than written to a temporary
+        // file and executed by path. A file would sit on disk for as long as the
+        // authentication dialog is up -- seconds, or minutes if the user hesitates -- and any
+        // other process running as this user could overwrite it in that window, so whatever
+        // it wrote would then be run as root. Nothing is on disk to swap this way.
+        //
+        // The base64 alphabet also contains no shell or AppleScript metacharacters, so the
+        // payload cannot break out of the quoting around it.
+        let encoded = Data(shellScript.utf8).base64EncodedString()
+        let source = """
+            do shell script "echo \(encoded) | /usr/bin/base64 -D | /bin/bash" \
+            with administrator privileges
+            """
 
         DispatchQueue.global(qos: .userInitiated).async {
             var errorInfo: NSDictionary?
             let appleScript = NSAppleScript(source: source)
             appleScript?.executeAndReturnError(&errorInfo)
-            try? FileManager.default.removeItem(at: tempURL)
 
             DispatchQueue.main.async {
                 if let errorInfo {
@@ -122,23 +122,33 @@ enum HelperInstaller {
         """
         #!/bin/bash
         set -e
+        # This runs as root via `do shell script ... with administrator privileges`, which
+        # inherits the invoking user's PATH untouched. On a typical developer machine that
+        # puts user-writable directories -- /opt/homebrew/bin, ~/.local/bin -- ahead of
+        # /usr/bin, so an unqualified `mkdir` or `chown` here would run whatever a local
+        # process had planted there, as root. Pin PATH and use absolute paths throughout.
+        PATH=/usr/bin:/bin:/usr/sbin:/sbin
+        export PATH
 
         # The app was renamed from "Vide Sleep Blocker"; clear the daemon it used to install so
         # it can't linger and keep toggling disablesleep behind the current one's back.
-        launchctl bootout system/\(legacyDaemonLabel) 2>/dev/null || true
-        rm -f "\(legacyPlistPath)"
-        rm -rf "\(legacyInstallDir)"
+        /bin/launchctl bootout system/\(legacyDaemonLabel) 2>/dev/null || true
+        /bin/rm -f "\(legacyPlistPath)"
+        /bin/rm -rf "\(legacyInstallDir)"
 
         INSTALL_DIR="\(installDir)"
-        mkdir -p "$INSTALL_DIR"
+        /bin/mkdir -p "$INSTALL_DIR"
 
-        cat > "\(helperScriptPath)" <<'HELPER_EOF'
+        /bin/cat > "\(helperScriptPath)" <<'HELPER_EOF'
         #!/bin/bash
+        PATH=/usr/bin:/bin:/usr/sbin:/sbin
+        export PATH
         STATE_FILE="\(stateFilePath)"
         MAX_AGE=\(stalenessSeconds)
 
         read_field() {
-          awk -F= -v k="$1" '$1==k {print $2}' "$STATE_FILE" 2>/dev/null | head -1 | tr -dc '0-9'
+          /usr/bin/awk -F= -v k="$1" '$1==k {print $2}' "$STATE_FILE" 2>/dev/null \\
+            | /usr/bin/head -1 | /usr/bin/tr -dc '0-9'
         }
 
         WANT=0
@@ -147,7 +157,7 @@ enum HelperInstaller {
           pid=$(read_field pid)
           ts=$(read_field ts)
           if [ "$desired" = "1" ] && [ -n "$pid" ] && [ -n "$ts" ] && kill -0 "$pid" 2>/dev/null; then
-            now=$(date +%s)
+            now=$(/bin/date +%s)
             age=$((now - ts))
             if [ "$age" -lt "$MAX_AGE" ] && [ "$age" -gt -"$MAX_AGE" ]; then
               WANT=1
@@ -155,26 +165,28 @@ enum HelperInstaller {
           fi
         fi
 
-        current=$(/usr/bin/pmset -g | awk '/SleepDisabled/{print $2}')
+        current=$(/usr/bin/pmset -g | /usr/bin/awk '/SleepDisabled/{print $2}')
         if [ "$current" != "$WANT" ]; then
           /usr/bin/pmset -a disablesleep "$WANT"
         fi
         HELPER_EOF
-        chmod 755 "\(helperScriptPath)"
-        chown root:wheel "\(helperScriptPath)"
+        /bin/chmod 755 "\(helperScriptPath)"
+        /usr/sbin/chown root:wheel "\(helperScriptPath)"
 
         printf 'desired=0\\npid=0\\nts=0\\n' > "\(stateFilePath)"
-        chown "\(NSUserName())" "\(stateFilePath)"
-        chmod 644 "\(stateFilePath)"
+        # Numeric uid, not the short name: a name is interpolated into a root shell string
+        # and could contain quoting characters. An integer cannot break out.
+        /usr/sbin/chown \(getuid()) "\(stateFilePath)"
+        /bin/chmod 644 "\(stateFilePath)"
 
         echo "\(helperVersion)" > "\(versionFilePath)"
-        chown root:wheel "\(versionFilePath)"
-        chmod 644 "\(versionFilePath)"
+        /usr/sbin/chown root:wheel "\(versionFilePath)"
+        /bin/chmod 644 "\(versionFilePath)"
 
-        chown root:wheel "$INSTALL_DIR"
-        chmod 755 "$INSTALL_DIR"
+        /usr/sbin/chown root:wheel "$INSTALL_DIR"
+        /bin/chmod 755 "$INSTALL_DIR"
 
-        cat > "\(plistPath)" <<'PLIST_EOF'
+        /bin/cat > "\(plistPath)" <<'PLIST_EOF'
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
         <plist version="1.0">
@@ -197,21 +209,29 @@ enum HelperInstaller {
         </dict>
         </plist>
         PLIST_EOF
-        chmod 644 "\(plistPath)"
-        chown root:wheel "\(plistPath)"
+        /bin/chmod 644 "\(plistPath)"
+        /usr/sbin/chown root:wheel "\(plistPath)"
 
-        launchctl bootout system/\(daemonLabel) 2>/dev/null || true
-        launchctl bootstrap system "\(plistPath)"
+        /bin/launchctl bootout system/\(daemonLabel) 2>/dev/null || true
+        /bin/launchctl bootstrap system "\(plistPath)"
         """
     }
 
     private static var uninstallScript: String {
+        // Order matters. Clearing the flag first was wrong: the app is still running and
+        // still writing `desired=1`, so a heartbeat landing between the reset and the bootout
+        // would make the still-loaded daemon set it again -- and then the daemon is deleted,
+        // leaving the Mac unable to sleep on a closed lid with nothing left to fix it.
+        // Unload the daemon first, then clear the flag, then remove the files.
         """
         #!/bin/bash
+        PATH=/usr/bin:/bin:/usr/sbin:/sbin
+        export PATH
+        /bin/launchctl bootout system/\(daemonLabel) 2>/dev/null || true
         /usr/bin/pmset -a disablesleep 0 || true
-        launchctl bootout system/\(daemonLabel) 2>/dev/null || true
-        rm -f "\(plistPath)"
-        rm -rf "\(installDir)"
+        /bin/rm -f "\(plistPath)"
+        /bin/rm -rf "\(installDir)"
+        /usr/bin/pmset -a disablesleep 0 || true
         """
     }
 }
