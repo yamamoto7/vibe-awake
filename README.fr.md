@@ -11,13 +11,13 @@ brew install --cask vibe-awake
 ```
 
 > [!NOTE]
-> Votre mot de passe administrateur vous sera demandé une seule fois au premier lancement. macOS ne laisse qu'un assistant privilégié empêcher la veille écran rabattu → [Configuration](#configuration)
+> Votre mot de passe administrateur vous sera demandé une seule fois au premier lancement. Sous macOS, seul un assistant privilégié peut empêcher la veille en mode écran fermé → [Configuration](#configuration)
 
 ## À quoi ça sert
 
-Vous confiez une longue tâche à Claude Code ou Codex CLI, vous vous absentez, et le Mac se met en veille avec le travail à moitié fait. Vibe Awake vit dans la barre des menus et bloque la veille **uniquement pendant qu'une session génère une réponse** — **y compris écran rabattu**.
+Vous confiez une longue tâche à Claude Code ou Codex CLI, vous vous absentez, et le Mac se met en veille avec le travail à moitié fait. Vibe Awake se loge dans la barre des menus et bloque la veille **uniquement pendant qu'une session génère une réponse** — **y compris en mode écran fermé**.
 
-Contrairement à laisser tourner `caffeinate`, une session à l'arrêt devant l'invite laisse le Mac se mettre en veille normalement. Pas de batterie gaspillée en vous attendant.
+Contrairement à `caffeinate` laissé actif en permanence, une session qui attend à l'invite laisse le Mac se mettre en veille normalement. Plus de batterie gaspillée à vous attendre.
 
 ## Outils pris en charge
 
@@ -56,7 +56,7 @@ Téléchargez le `.dmg` depuis [Releases](https://github.com/yamamoto7/vibe-awak
 
 Au premier lancement, votre **mot de passe administrateur vous sera demandé une seule fois**.
 
-macOS ne laisse qu'un programme disposant des droits administrateur empêcher la mise en veille écran rabattu. L'assistant installé ne fait rien d'autre que basculer le réglage d'énergie intégré (`pmset`) : aucun accès réseau, aucune donnée collectée. Vous pouvez le supprimer à tout moment depuis les réglages.
+Sous macOS, seul un programme disposant des droits administrateur peut empêcher la mise en veille en mode écran fermé. L'assistant installé ne fait rien d'autre que basculer le réglage d'énergie intégré (`pmset`) : aucun accès réseau, aucune donnée collectée. Vous pouvez le supprimer à tout moment depuis les réglages.
 
 Le blocage de la veille ne fait rien tant que la configuration n'est pas terminée.
 
@@ -66,7 +66,7 @@ Cliquez sur l'icône de la barre des menus pour voir ce qui se passe.
 
 - **En cours** — génère une réponse ou exécute un outil
 - **En attente d'approbation** — attend que vous confirmiez quelque chose
-- **Inactive** — à l'arrêt devant l'invite
+- **Inactive** — à l'invite, aucune tâche en cours
 
 Une icône pleine signifie que la veille est bloquée. Une icône d'avertissement orange signifie que la configuration n'a pas été faite.
 
@@ -75,9 +75,9 @@ Une icône pleine signifie que la veille est bloquée. Une icône d'avertissemen
 | | |
 |---|---|
 | Bloquer la veille | Désactive tout temporairement |
-| Ouvrir à l'ouverture de session | Démarre avec votre Mac |
-| Éteindre l'écran quand l'ordinateur est rabattu | Pendant le blocage de la veille, macOS laisse l'écran intégré allumé derrière un écran rabattu. L'éteindre économise de l'énergie. Sans effet si un écran externe est connecté |
-| Compter l'attente d'approbation comme du travail | Activez ceci si vous approuvez à distance, depuis votre téléphone par exemple. Désactivé, le Mac se met en veille pendant qu'une session attend votre approbation |
+| Ouvrir avec la session | Démarre avec votre Mac |
+| Éteindre l'écran en mode écran fermé | Pendant le blocage de la veille, macOS laisse l'écran intégré allumé même en mode écran fermé. L'éteindre économise de l'énergie. Sans effet si un écran externe est connecté |
+| Compter l'attente d'approbation comme du travail | Activez cette option si vous approuvez à distance, depuis votre téléphone par exemple. Sinon, le Mac se met en veille pendant qu'une session attend votre approbation |
 
 ## Langues
 

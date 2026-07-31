@@ -1,8 +1,8 @@
-TAGLINE|Hält deinen Mac nur dann wach, solange eine KI-Coding-Sitzung tatsächlich arbeitet.
-NOTE|Beim ersten Start wirst du einmal nach deinem Administratorkennwort gefragt. macOS lässt nur ein privilegiertes Hilfsprogramm den Ruhezustand bei geschlossenem Deckel verhindern → [Einrichtung](#einrichtung)
+TAGLINE|Hält deinen Mac nur wach, solange eine KI-Coding-Sitzung tatsächlich arbeitet.
+NOTE|Beim ersten Start wirst du einmal nach deinem Administratorpasswort gefragt. macOS lässt nur ein privilegiertes Hilfsprogramm den Ruhezustand bei geschlossenem Deckel verhindern → [Einrichtung](#einrichtung)
 H_WHAT|Worum es geht
-P_WHAT1|Du gibst Claude Code oder Codex CLI eine längere Aufgabe, gehst weg, und der Mac schläft ein — die Arbeit halb erledigt. Vibe Awake sitzt in der Menüleiste und blockiert den Ruhezustand **nur solange eine Sitzung eine Antwort erzeugt** — **auch bei geschlossenem Deckel**.
-P_WHAT2|Anders als ein dauerhaft laufendes `caffeinate` lässt eine Sitzung, die an der Eingabeaufforderung wartet, den Mac ganz normal einschlafen. Kein Strom, der verbraucht wird, während du weg bist.
+P_WHAT1|Du gibst Claude Code oder Codex CLI eine längere Aufgabe, gehst weg, und der Mac schläft ein — die Arbeit halb erledigt. Vibe Awake sitzt in der Menüleiste und blockiert den Ruhezustand **nur, solange eine Sitzung eine Antwort erzeugt** — **auch bei geschlossenem Deckel**.
+P_WHAT2|Anders als ein dauerhaft laufendes `caffeinate` lässt eine Sitzung, die an der Eingabeaufforderung wartet, den Mac ganz normal einschlafen. So wird kein Strom verschwendet, während du weg bist.
 H_TOOLS|Unterstützte Werkzeuge
 T_SUPPORTED|Unterstützt
 T_CLAUDE|Claude Code (Terminal)
@@ -18,7 +18,7 @@ C_UNINSTALL|# entfernt auch das Hilfsprogramm
 H_MANUAL|Manuell
 P_MANUAL|Lade das `.dmg` von [Releases](https://github.com/yamamoto7/vibe-awake/releases) und ziehe `Vibe Awake.app` nach `Programme`.
 H_SETUP|Einrichtung
-P_SETUP1|Beim ersten Start wirst du **einmal nach deinem Administratorkennwort** gefragt.
+P_SETUP1|Beim ersten Start wirst du **einmal nach deinem Administratorpasswort** gefragt.
 P_SETUP2|macOS lässt nur ein Programm mit Administratorrechten den Ruhezustand bei geschlossenem Deckel verhindern. Das installierte Hilfsprogramm tut nichts weiter, als die eingebaute Energieeinstellung (`pmset`) umzuschalten — kein Netzwerkzugriff, keine Datenerfassung. Du kannst es jederzeit in den Einstellungen entfernen.
 P_SETUP3|Bis die Einrichtung abgeschlossen ist, blockiert die App gar nichts.
 H_USING|Benutzung
@@ -32,8 +32,8 @@ S_ENABLE|Ruhezustand blockieren
 S_ENABLE_D|Schaltet das Ganze vorübergehend ab
 S_LOGIN|Bei der Anmeldung öffnen
 S_LOGIN_D|Startet zusammen mit deinem Mac
-S_DISPLAY|Bildschirm ausschalten, wenn der Deckel geschlossen wird
-S_DISPLAY_D|Während der Ruhezustand blockiert ist, lässt macOS den eingebauten Bildschirm hinter dem geschlossenen Deckel an. Ihn auszuschalten spart Strom. Bei angeschlossenem externen Bildschirm passiert nichts
+S_DISPLAY|Bildschirm bei geschlossenem Deckel ausschalten
+S_DISPLAY_D|Während der Ruhezustand blockiert ist, lässt macOS den integrierten Bildschirm auch bei geschlossenem Deckel eingeschaltet. Ihn auszuschalten spart Strom. Bei angeschlossenem externen Bildschirm passiert nichts
 S_APPROVAL|Warten auf Bestätigung als Arbeit werten
 S_APPROVAL_D|Aktiviere dies, wenn du aus der Ferne bestätigst, etwa vom Telefon. Ist es aus, schläft der Mac ein, während eine Sitzung auf deine Bestätigung wartet
 H_LANGS|Sprachen

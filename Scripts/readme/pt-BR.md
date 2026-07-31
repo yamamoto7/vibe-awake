@@ -1,13 +1,13 @@
 TAGLINE|Mantém seu Mac acordado apenas enquanto uma sessão de programação com IA está de fato trabalhando.
 NOTE|Sua senha de administrador será pedida uma única vez no primeiro uso. O macOS só permite que um auxiliar privilegiado impeça o repouso com a tampa fechada → [Configuração](#configuração)
 H_WHAT|O que faz
-P_WHAT1|Você passa uma tarefa longa para o Claude Code ou o Codex CLI, sai da frente, e o Mac entra em repouso com o trabalho pela metade. O Vibe Awake fica na barra de menus e bloqueia o repouso **apenas enquanto uma sessão está gerando uma resposta** — **inclusive com a tampa do MacBook fechada**.
-P_WHAT2|Diferente de deixar o `caffeinate` ligado, uma sessão parada no prompt deixa o Mac dormir normalmente. Sem gastar bateria esperando você voltar.
+P_WHAT1|Você passa uma tarefa longa para o Claude Code ou o Codex CLI, sai de perto do computador, e o Mac entra em repouso com o trabalho pela metade. O Vibe Awake fica na barra de menus e bloqueia o repouso **apenas enquanto uma sessão está gerando uma resposta** — **inclusive com a tampa do MacBook fechada**.
+P_WHAT2|Ao contrário de deixar o `caffeinate` rodando, uma sessão parada no prompt deixa o Mac entrar em repouso normalmente. Sem gastar bateria esperando você voltar.
 H_TOOLS|Ferramentas compatíveis
 T_SUPPORTED|Compatível
 T_CLAUDE|Claude Code (terminal)
 T_CODEX|Codex CLI (terminal)
-T_DESKTOP|App de mesa do Claude
+T_DESKTOP|App do Claude para computador
 T_CURSOR|Cursor
 P_HEADLESS|Execuções sem interface (`claude -p`, `codex exec`) estão fora do escopo.
 H_INSTALL|Instalação
@@ -19,7 +19,7 @@ H_MANUAL|Manualmente
 P_MANUAL|Baixe o `.dmg` em [Releases](https://github.com/yamamoto7/vibe-awake/releases) e arraste o `Vibe Awake.app` para `Aplicativos`.
 H_SETUP|Configuração
 P_SETUP1|No primeiro uso será pedida sua **senha de administrador, uma única vez**.
-P_SETUP2|O macOS só permite que um programa com permissões de administrador impeça o Mac de dormir com a tampa fechada. O auxiliar instalado não faz nada além de alternar o ajuste de energia nativo (`pmset`) — sem acesso à rede e sem coletar dados. Você pode removê-lo a qualquer momento nos ajustes.
+P_SETUP2|O macOS só permite que um programa com permissões de administrador impeça o Mac de entrar em repouso com a tampa fechada. O auxiliar instalado não faz nada além de ativar e desativar o ajuste de energia nativo (`pmset`) — sem acesso à rede e sem coletar dados. Você pode removê-lo a qualquer momento nos ajustes.
 P_SETUP3|O bloqueio de repouso não faz nada até a configuração terminar.
 H_USING|Como usar
 P_USING|Clique no ícone da barra de menus para ver o que está acontecendo.
@@ -33,9 +33,9 @@ S_ENABLE_D|Desliga tudo temporariamente
 S_LOGIN|Abrir ao iniciar sessão
 S_LOGIN_D|Inicia junto com o Mac
 S_DISPLAY|Desligar a tela ao fechar a tampa
-S_DISPLAY_D|Enquanto o repouso está bloqueado, o macOS deixa a tela interna ligada atrás da tampa fechada. Desligá-la economiza energia. Não faz nada quando há uma tela externa conectada
-S_APPROVAL|Contar espera por aprovação como trabalho
-S_APPROVAL_D|Ative se você aprova remotamente, pelo celular por exemplo. Desativado, o Mac dorme enquanto uma sessão espera sua aprovação
+S_DISPLAY_D|Enquanto o repouso está bloqueado, o macOS deixa a tela integrada ligada mesmo com a tampa fechada. Desligá-la economiza energia. Não faz nada quando há uma tela externa conectada
+S_APPROVAL|Considerar a espera por aprovação como trabalho
+S_APPROVAL_D|Ative se você costuma aprovar remotamente, pelo celular, por exemplo. Com a opção desativada, o Mac entra em repouso enquanto uma sessão aguarda sua aprovação
 H_LANGS|Idiomas
 P_LANGS|English, 日本語, 简体中文, 한국어, Español, Français, Deutsch, Português (Brasil), Русский. O app segue o idioma configurado no macOS.
 H_CAVEATS|Observações

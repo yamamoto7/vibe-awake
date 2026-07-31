@@ -1,8 +1,8 @@
 TAGLINE|Keeps your Mac awake only while an AI coding session is actually working.
-NOTE|You'll be asked for your administrator password once on first launch. macOS only lets a privileged helper stop the Mac sleeping with the lid closed → [Setup](#setup)
+NOTE|You'll be asked for your administrator password once on first launch. macOS only lets a privileged helper stop your Mac from sleeping with the lid closed → [Setup](#setup)
 H_WHAT|What it does
 P_WHAT1|Hand Claude Code or Codex CLI a long task, step away, and your Mac goes to sleep with the work half done. Vibe Awake sits in the menu bar and blocks sleep **only while a session is generating a response** — **including with the MacBook's lid closed**.
-P_WHAT2|Unlike leaving `caffeinate` running, a session parked at the prompt lets the Mac sleep normally. No battery burned waiting for you to come back.
+P_WHAT2|Unlike leaving `caffeinate` running, Vibe Awake lets your Mac sleep normally while a session sits at the prompt. No battery burned waiting for you to come back.
 H_TOOLS|Supported tools
 T_SUPPORTED|Supported
 T_CLAUDE|Claude Code (terminal)
@@ -19,7 +19,7 @@ H_MANUAL|Manually
 P_MANUAL|Download the `.dmg` from [Releases](https://github.com/yamamoto7/vibe-awake/releases) and drag `Vibe Awake.app` into `Applications`.
 H_SETUP|Setup
 P_SETUP1|On first launch you'll be asked for your **administrator password, once**.
-P_SETUP2|macOS only lets a program with administrator rights stop the Mac from sleeping when the lid is closed. The helper that gets installed does nothing but toggle the built-in power setting (`pmset`) — no network access, no data collected. You can remove it at any time from Settings.
+P_SETUP2|macOS only lets a program with administrator privileges stop your Mac from sleeping when the lid is closed. The helper that gets installed does nothing but toggle a built-in macOS power setting with `pmset` — no network access, no data collected. You can remove it at any time in Settings.
 P_SETUP3|Sleep blocking does nothing until setup is finished.
 H_USING|Using it
 P_USING|Click the menu bar icon to see what's happening.
@@ -32,7 +32,7 @@ S_ENABLE|Block sleep
 S_ENABLE_D|Turn the whole thing off temporarily
 S_LOGIN|Open at login
 S_LOGIN_D|Start with your Mac
-S_DISPLAY|Turn the display off when the lid closes
+S_DISPLAY|Turn the display off while the lid is closed
 S_DISPLAY_D|While sleep is blocked, macOS leaves the built-in display on behind a closed lid. Turning it off saves power. Does nothing when an external display is connected
 S_APPROVAL|Count awaiting approval as working
 S_APPROVAL_D|Turn this on if you approve remotely, such as from your phone. With it off, the Mac sleeps while a session waits for approval

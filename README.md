@@ -11,13 +11,13 @@ brew install --cask vibe-awake
 ```
 
 > [!NOTE]
-> You'll be asked for your administrator password once on first launch. macOS only lets a privileged helper stop the Mac sleeping with the lid closed → [Setup](#setup)
+> You'll be asked for your administrator password once on first launch. macOS only lets a privileged helper stop your Mac from sleeping with the lid closed → [Setup](#setup)
 
 ## What it does
 
 Hand Claude Code or Codex CLI a long task, step away, and your Mac goes to sleep with the work half done. Vibe Awake sits in the menu bar and blocks sleep **only while a session is generating a response** — **including with the MacBook's lid closed**.
 
-Unlike leaving `caffeinate` running, a session parked at the prompt lets the Mac sleep normally. No battery burned waiting for you to come back.
+Unlike leaving `caffeinate` running, Vibe Awake lets your Mac sleep normally while a session sits at the prompt. No battery burned waiting for you to come back.
 
 ## Supported tools
 
@@ -56,7 +56,7 @@ Download the `.dmg` from [Releases](https://github.com/yamamoto7/vibe-awake/rele
 
 On first launch you'll be asked for your **administrator password, once**.
 
-macOS only lets a program with administrator rights stop the Mac from sleeping when the lid is closed. The helper that gets installed does nothing but toggle the built-in power setting (`pmset`) — no network access, no data collected. You can remove it at any time from Settings.
+macOS only lets a program with administrator privileges stop your Mac from sleeping when the lid is closed. The helper that gets installed does nothing but toggle a built-in macOS power setting with `pmset` — no network access, no data collected. You can remove it at any time in Settings.
 
 Sleep blocking does nothing until setup is finished.
 
@@ -76,7 +76,7 @@ A filled-in icon means sleep is being blocked. An orange warning icon means setu
 |---|---|
 | Block sleep | Turn the whole thing off temporarily |
 | Open at login | Start with your Mac |
-| Turn the display off when the lid closes | While sleep is blocked, macOS leaves the built-in display on behind a closed lid. Turning it off saves power. Does nothing when an external display is connected |
+| Turn the display off while the lid is closed | While sleep is blocked, macOS leaves the built-in display on behind a closed lid. Turning it off saves power. Does nothing when an external display is connected |
 | Count awaiting approval as working | Turn this on if you approve remotely, such as from your phone. With it off, the Mac sleeps while a session waits for approval |
 
 ## Languages

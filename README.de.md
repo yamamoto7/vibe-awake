@@ -1,7 +1,7 @@
 <div align="center">
   <img src="Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
-  <p>Hält deinen Mac nur dann wach, solange eine KI-Coding-Sitzung tatsächlich arbeitet.</p>
+  <p>Hält deinen Mac nur wach, solange eine KI-Coding-Sitzung tatsächlich arbeitet.</p>
   <p><a href="README.md">English</a> · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · Deutsch · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
 </div>
 
@@ -11,13 +11,13 @@ brew install --cask vibe-awake
 ```
 
 > [!NOTE]
-> Beim ersten Start wirst du einmal nach deinem Administratorkennwort gefragt. macOS lässt nur ein privilegiertes Hilfsprogramm den Ruhezustand bei geschlossenem Deckel verhindern → [Einrichtung](#einrichtung)
+> Beim ersten Start wirst du einmal nach deinem Administratorpasswort gefragt. macOS lässt nur ein privilegiertes Hilfsprogramm den Ruhezustand bei geschlossenem Deckel verhindern → [Einrichtung](#einrichtung)
 
 ## Worum es geht
 
-Du gibst Claude Code oder Codex CLI eine längere Aufgabe, gehst weg, und der Mac schläft ein — die Arbeit halb erledigt. Vibe Awake sitzt in der Menüleiste und blockiert den Ruhezustand **nur solange eine Sitzung eine Antwort erzeugt** — **auch bei geschlossenem Deckel**.
+Du gibst Claude Code oder Codex CLI eine längere Aufgabe, gehst weg, und der Mac schläft ein — die Arbeit halb erledigt. Vibe Awake sitzt in der Menüleiste und blockiert den Ruhezustand **nur, solange eine Sitzung eine Antwort erzeugt** — **auch bei geschlossenem Deckel**.
 
-Anders als ein dauerhaft laufendes `caffeinate` lässt eine Sitzung, die an der Eingabeaufforderung wartet, den Mac ganz normal einschlafen. Kein Strom, der verbraucht wird, während du weg bist.
+Anders als ein dauerhaft laufendes `caffeinate` lässt eine Sitzung, die an der Eingabeaufforderung wartet, den Mac ganz normal einschlafen. So wird kein Strom verschwendet, während du weg bist.
 
 ## Unterstützte Werkzeuge
 
@@ -54,7 +54,7 @@ Lade das `.dmg` von [Releases](https://github.com/yamamoto7/vibe-awake/releases)
 
 ## Einrichtung
 
-Beim ersten Start wirst du **einmal nach deinem Administratorkennwort** gefragt.
+Beim ersten Start wirst du **einmal nach deinem Administratorpasswort** gefragt.
 
 macOS lässt nur ein Programm mit Administratorrechten den Ruhezustand bei geschlossenem Deckel verhindern. Das installierte Hilfsprogramm tut nichts weiter, als die eingebaute Energieeinstellung (`pmset`) umzuschalten — kein Netzwerkzugriff, keine Datenerfassung. Du kannst es jederzeit in den Einstellungen entfernen.
 
@@ -76,7 +76,7 @@ Ein ausgefülltes Symbol bedeutet, dass der Ruhezustand blockiert wird. Ein oran
 |---|---|
 | Ruhezustand blockieren | Schaltet das Ganze vorübergehend ab |
 | Bei der Anmeldung öffnen | Startet zusammen mit deinem Mac |
-| Bildschirm ausschalten, wenn der Deckel geschlossen wird | Während der Ruhezustand blockiert ist, lässt macOS den eingebauten Bildschirm hinter dem geschlossenen Deckel an. Ihn auszuschalten spart Strom. Bei angeschlossenem externen Bildschirm passiert nichts |
+| Bildschirm bei geschlossenem Deckel ausschalten | Während der Ruhezustand blockiert ist, lässt macOS den integrierten Bildschirm auch bei geschlossenem Deckel eingeschaltet. Ihn auszuschalten spart Strom. Bei angeschlossenem externen Bildschirm passiert nichts |
 | Warten auf Bestätigung als Arbeit werten | Aktiviere dies, wenn du aus der Ferne bestätigst, etwa vom Telefon. Ist es aus, schläft der Mac ein, während eine Sitzung auf deine Bestätigung wartet |
 
 ## Sprachen

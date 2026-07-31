@@ -15,9 +15,9 @@ brew install --cask vibe-awake
 
 ## O que faz
 
-Você passa uma tarefa longa para o Claude Code ou o Codex CLI, sai da frente, e o Mac entra em repouso com o trabalho pela metade. O Vibe Awake fica na barra de menus e bloqueia o repouso **apenas enquanto uma sessão está gerando uma resposta** — **inclusive com a tampa do MacBook fechada**.
+Você passa uma tarefa longa para o Claude Code ou o Codex CLI, sai de perto do computador, e o Mac entra em repouso com o trabalho pela metade. O Vibe Awake fica na barra de menus e bloqueia o repouso **apenas enquanto uma sessão está gerando uma resposta** — **inclusive com a tampa do MacBook fechada**.
 
-Diferente de deixar o `caffeinate` ligado, uma sessão parada no prompt deixa o Mac dormir normalmente. Sem gastar bateria esperando você voltar.
+Ao contrário de deixar o `caffeinate` rodando, uma sessão parada no prompt deixa o Mac entrar em repouso normalmente. Sem gastar bateria esperando você voltar.
 
 ## Ferramentas compatíveis
 
@@ -25,7 +25,7 @@ Diferente de deixar o `caffeinate` ligado, uma sessão parada no prompt deixa o 
 |---|:---:|
 | Claude Code (terminal) | ✅ |
 | Codex CLI (terminal) | ✅ |
-| App de mesa do Claude | ― |
+| App do Claude para computador | ― |
 | Cursor | ― |
 
 Execuções sem interface (`claude -p`, `codex exec`) estão fora do escopo.
@@ -56,7 +56,7 @@ Baixe o `.dmg` em [Releases](https://github.com/yamamoto7/vibe-awake/releases) e
 
 No primeiro uso será pedida sua **senha de administrador, uma única vez**.
 
-O macOS só permite que um programa com permissões de administrador impeça o Mac de dormir com a tampa fechada. O auxiliar instalado não faz nada além de alternar o ajuste de energia nativo (`pmset`) — sem acesso à rede e sem coletar dados. Você pode removê-lo a qualquer momento nos ajustes.
+O macOS só permite que um programa com permissões de administrador impeça o Mac de entrar em repouso com a tampa fechada. O auxiliar instalado não faz nada além de ativar e desativar o ajuste de energia nativo (`pmset`) — sem acesso à rede e sem coletar dados. Você pode removê-lo a qualquer momento nos ajustes.
 
 O bloqueio de repouso não faz nada até a configuração terminar.
 
@@ -76,8 +76,8 @@ Um ícone preenchido significa que o repouso está bloqueado. Um ícone laranja 
 |---|---|
 | Bloquear repouso | Desliga tudo temporariamente |
 | Abrir ao iniciar sessão | Inicia junto com o Mac |
-| Desligar a tela ao fechar a tampa | Enquanto o repouso está bloqueado, o macOS deixa a tela interna ligada atrás da tampa fechada. Desligá-la economiza energia. Não faz nada quando há uma tela externa conectada |
-| Contar espera por aprovação como trabalho | Ative se você aprova remotamente, pelo celular por exemplo. Desativado, o Mac dorme enquanto uma sessão espera sua aprovação |
+| Desligar a tela ao fechar a tampa | Enquanto o repouso está bloqueado, o macOS deixa a tela integrada ligada mesmo com a tampa fechada. Desligá-la economiza energia. Não faz nada quando há uma tela externa conectada |
+| Considerar a espera por aprovação como trabalho | Ative se você costuma aprovar remotamente, pelo celular, por exemplo. Com a opção desativada, o Mac entra em repouso enquanto uma sessão aguarda sua aprovação |
 
 ## Idiomas
 

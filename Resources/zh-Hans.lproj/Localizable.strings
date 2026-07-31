@@ -19,8 +19,8 @@
 
 "setup.title" = "需要进行设置";
 "setup.updateTitle" = "需要更新";
-"setup.reason" = "需要一个辅助程序来管理合盖时的睡眠状态。它尚未安装，因此阻止睡眠功能当前无法工作。";
-"setup.updateReason" = "辅助程序版本过旧，因此阻止睡眠功能当前无法工作。";
+"setup.reason" = "需要一个辅助程序来管理合盖时的睡眠。它尚未安装，因此阻止睡眠当前未生效。";
+"setup.updateReason" = "辅助程序版本过旧，因此阻止睡眠当前未生效。";
 "setup.passwordNote" = "只需输入一次 macOS 管理员密码";
 "setup.button" = "开始设置";
 "setup.updateButton" = "更新";
@@ -33,14 +33,14 @@
 
 "settings.windowTitle" = "设置";
 "settings.section.general" = "通用";
-"settings.enable" = "启用阻止睡眠";
-"settings.launchAtLogin" = "登录时启动";
+"settings.enable" = "阻止睡眠";
+"settings.launchAtLogin" = "登录时打开";
 "settings.section.display" = "显示器";
-"settings.sleepDisplay" = "合盖时关闭屏幕";
+"settings.sleepDisplay" = "合盖时关闭显示器";
 "settings.sleepDisplay.note" = "在阻止睡眠期间，即使合上盖子，macOS 仍会保持内置显示器点亮。将其关闭可避免浪费电量。连接外接显示器时不会执行任何操作。";
 "settings.section.approval" = "等待批准的处理方式";
 "settings.treatWaitingAsActive" = "将等待批准视为工作中";
-"settings.treatWaitingAsActive.note" = "是否将 Claude Code 等待您确认权限的状态视为工作中。如果您通过手机等设备远程批准，请开启此项。";
+"settings.treatWaitingAsActive.note" = "是否将会话等待你确认操作的状态视为工作中。如果你通过手机等设备远程批准，请开启此项。";
 "settings.section.sessions" = "会话";
 "settings.noSessions" = "没有正在运行的会话。";
 "settings.count" = "%d 个";
@@ -52,7 +52,7 @@
 "settings.section.lidClose" = "合盖时阻止睡眠";
 "settings.helper.state" = "状态";
 "settings.helper.enabled" = "已启用";
-"settings.helper.note" = "合上盖子也不会睡眠。当应用未运行时，辅助程序会自动停用。";
+"settings.helper.note" = "合盖后 Mac 也不会进入睡眠。应用未运行时，辅助程序会自动停用。";
 "settings.helper.remove" = "移除辅助程序";
 "settings.section.about" = "关于";
 

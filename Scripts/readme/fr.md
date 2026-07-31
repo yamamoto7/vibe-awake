@@ -1,8 +1,8 @@
 TAGLINE|Garde votre Mac éveillé uniquement pendant qu'une session de codage IA travaille réellement.
-NOTE|Votre mot de passe administrateur vous sera demandé une seule fois au premier lancement. macOS ne laisse qu'un assistant privilégié empêcher la veille écran rabattu → [Configuration](#configuration)
+NOTE|Votre mot de passe administrateur vous sera demandé une seule fois au premier lancement. Sous macOS, seul un assistant privilégié peut empêcher la veille en mode écran fermé → [Configuration](#configuration)
 H_WHAT|À quoi ça sert
-P_WHAT1|Vous confiez une longue tâche à Claude Code ou Codex CLI, vous vous absentez, et le Mac se met en veille avec le travail à moitié fait. Vibe Awake vit dans la barre des menus et bloque la veille **uniquement pendant qu'une session génère une réponse** — **y compris écran rabattu**.
-P_WHAT2|Contrairement à laisser tourner `caffeinate`, une session à l'arrêt devant l'invite laisse le Mac se mettre en veille normalement. Pas de batterie gaspillée en vous attendant.
+P_WHAT1|Vous confiez une longue tâche à Claude Code ou Codex CLI, vous vous absentez, et le Mac se met en veille avec le travail à moitié fait. Vibe Awake se loge dans la barre des menus et bloque la veille **uniquement pendant qu'une session génère une réponse** — **y compris en mode écran fermé**.
+P_WHAT2|Contrairement à `caffeinate` laissé actif en permanence, une session qui attend à l'invite laisse le Mac se mettre en veille normalement. Plus de batterie gaspillée à vous attendre.
 H_TOOLS|Outils pris en charge
 T_SUPPORTED|Pris en charge
 T_CLAUDE|Claude Code (terminal)
@@ -19,23 +19,23 @@ H_MANUAL|Manuellement
 P_MANUAL|Téléchargez le `.dmg` depuis [Releases](https://github.com/yamamoto7/vibe-awake/releases) et faites glisser `Vibe Awake.app` dans `Applications`.
 H_SETUP|Configuration
 P_SETUP1|Au premier lancement, votre **mot de passe administrateur vous sera demandé une seule fois**.
-P_SETUP2|macOS ne laisse qu'un programme disposant des droits administrateur empêcher la mise en veille écran rabattu. L'assistant installé ne fait rien d'autre que basculer le réglage d'énergie intégré (`pmset`) : aucun accès réseau, aucune donnée collectée. Vous pouvez le supprimer à tout moment depuis les réglages.
+P_SETUP2|Sous macOS, seul un programme disposant des droits administrateur peut empêcher la mise en veille en mode écran fermé. L'assistant installé ne fait rien d'autre que basculer le réglage d'énergie intégré (`pmset`) : aucun accès réseau, aucune donnée collectée. Vous pouvez le supprimer à tout moment depuis les réglages.
 P_SETUP3|Le blocage de la veille ne fait rien tant que la configuration n'est pas terminée.
 H_USING|Utilisation
 P_USING|Cliquez sur l'icône de la barre des menus pour voir ce qui se passe.
 L_WORKING|**En cours** — génère une réponse ou exécute un outil
 L_WAITING|**En attente d'approbation** — attend que vous confirmiez quelque chose
-L_IDLE|**Inactive** — à l'arrêt devant l'invite
+L_IDLE|**Inactive** — à l'invite, aucune tâche en cours
 P_ICON|Une icône pleine signifie que la veille est bloquée. Une icône d'avertissement orange signifie que la configuration n'a pas été faite.
 H_SETTINGS|Réglages
 S_ENABLE|Bloquer la veille
 S_ENABLE_D|Désactive tout temporairement
-S_LOGIN|Ouvrir à l'ouverture de session
+S_LOGIN|Ouvrir avec la session
 S_LOGIN_D|Démarre avec votre Mac
-S_DISPLAY|Éteindre l'écran quand l'ordinateur est rabattu
-S_DISPLAY_D|Pendant le blocage de la veille, macOS laisse l'écran intégré allumé derrière un écran rabattu. L'éteindre économise de l'énergie. Sans effet si un écran externe est connecté
+S_DISPLAY|Éteindre l'écran en mode écran fermé
+S_DISPLAY_D|Pendant le blocage de la veille, macOS laisse l'écran intégré allumé même en mode écran fermé. L'éteindre économise de l'énergie. Sans effet si un écran externe est connecté
 S_APPROVAL|Compter l'attente d'approbation comme du travail
-S_APPROVAL_D|Activez ceci si vous approuvez à distance, depuis votre téléphone par exemple. Désactivé, le Mac se met en veille pendant qu'une session attend votre approbation
+S_APPROVAL_D|Activez cette option si vous approuvez à distance, depuis votre téléphone par exemple. Sinon, le Mac se met en veille pendant qu'une session attend votre approbation
 H_LANGS|Langues
 P_LANGS|English, 日本語, 简体中文, 한국어, Español, Français, Deutsch, Português (Brasil), Русский. L'app suit la langue configurée dans macOS.
 H_CAVEATS|À savoir

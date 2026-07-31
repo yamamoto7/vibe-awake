@@ -33,7 +33,7 @@ S_ENABLE_D|Desactiva todo temporalmente
 S_LOGIN|Abrir al iniciar sesión
 S_LOGIN_D|Se inicia junto con el Mac
 S_DISPLAY|Apagar la pantalla al cerrar la tapa
-S_DISPLAY_D|Mientras se bloquea el reposo, macOS deja encendida la pantalla integrada tras la tapa cerrada. Apagarla ahorra batería. No hace nada si hay una pantalla externa conectada
+S_DISPLAY_D|Mientras se bloquea el reposo, macOS deja encendida la pantalla integrada aunque la tapa esté cerrada. Apagarla ahorra energía. No hace nada si hay una pantalla externa conectada
 S_APPROVAL|Contar la espera de aprobación como trabajo
 S_APPROVAL_D|Actívalo si apruebas de forma remota, por ejemplo desde el móvil. Con esto desactivado, el Mac se duerme mientras una sesión espera tu aprobación
 H_LANGS|Idiomas

@@ -2,7 +2,7 @@
 
 "activity.working" = "Работает";
 "activity.waiting" = "Ожидает подтверждения";
-"activity.idle" = "Простой";
+"activity.idle" = "Бездействует";
 "activity.unknown" = "Неизвестно";
 
 "status.disabled" = "Блокировка сна: выключена";
@@ -11,11 +11,11 @@
 "detail.disabledInSettings" = "Отключено в настройках";
 "detail.claudeStateUnavailable" = "Не удаётся прочитать состояние Claude Code";
 "detail.noSessions" = "Нет запущенных сессий";
-"detail.allIdle" = "Все сессии простаивают";
+"detail.allIdle" = "Все сессии бездействуют";
 "detail.oneWorking" = "%1$@ (%2$@) работает";
 "detail.manyWorking" = "Работает сессий: %d";
 "button.settings" = "Настройки…";
-"button.quit" = "Выйти";
+"button.quit" = "Завершить";
 
 "setup.title" = "Требуется настройка";
 "setup.updateTitle" = "Требуется обновление";
@@ -34,25 +34,25 @@
 "settings.windowTitle" = "Настройки";
 "settings.section.general" = "Основные";
 "settings.enable" = "Блокировать сон";
-"settings.launchAtLogin" = "Запускать при входе";
+"settings.launchAtLogin" = "Открывать при входе";
 "settings.section.display" = "Дисплей";
-"settings.sleepDisplay" = "Выключать экран при закрытии крышки";
-"settings.sleepDisplay.note" = "Пока сон заблокирован, macOS оставляет встроенный дисплей включённым даже с закрытой крышкой. Его выключение экономит энергию. При подключённом внешнем дисплее ничего не происходит.";
+"settings.sleepDisplay" = "Выключать дисплей при закрытии крышки";
+"settings.sleepDisplay.note" = "Пока сон заблокирован, macOS оставляет встроенный дисплей включённым даже при закрытой крышке. Выключение дисплея экономит энергию. При подключённом внешнем дисплее настройка не действует.";
 "settings.section.approval" = "Ожидание подтверждения";
 "settings.treatWaitingAsActive" = "Считать ожидание подтверждения работой";
 "settings.treatWaitingAsActive.note" = "Считать ли сессию, ожидающую вашего подтверждения, работающей. Включите, если подтверждаете удалённо, например с телефона.";
 "settings.section.sessions" = "Сессии";
 "settings.noSessions" = "Нет запущенных сессий.";
 "settings.count" = "%d";
-"settings.claudeFallback" = "Не удаётся прочитать состояние Claude Code. Возможно, это устаревшая версия. Сон блокируется, пока выполняется её процесс.";
+"settings.claudeFallback" = "Не удаётся прочитать состояние Claude Code. Возможно, установлена устаревшая версия. Сон блокируется, пока запущен его процесс.";
 "settings.moreSessions" = "ещё %d";
 "settings.tool.none" = "Нет сессий";
 "settings.tool.unknownState" = "Запущено (состояние неизвестно)";
 "settings.tool.summary" = "Работает %2$d из %1$d";
-"settings.section.lidClose" = "Сон при закрытой крышке";
+"settings.section.lidClose" = "При закрытой крышке";
 "settings.helper.state" = "Состояние";
 "settings.helper.enabled" = "Включено";
-"settings.helper.note" = "Mac не засыпает с закрытой крышкой. Компонент сам отключается, когда приложение не запущено.";
+"settings.helper.note" = "Mac не засыпает при закрытой крышке. Компонент сам отключается, когда приложение не запущено.";
 "settings.helper.remove" = "Удалить компонент";
 "settings.section.about" = "О программе";
 

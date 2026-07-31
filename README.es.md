@@ -76,7 +76,7 @@ Un icono relleno significa que se está bloqueando el reposo. Un icono naranja d
 |---|---|
 | Bloquear el reposo | Desactiva todo temporalmente |
 | Abrir al iniciar sesión | Se inicia junto con el Mac |
-| Apagar la pantalla al cerrar la tapa | Mientras se bloquea el reposo, macOS deja encendida la pantalla integrada tras la tapa cerrada. Apagarla ahorra batería. No hace nada si hay una pantalla externa conectada |
+| Apagar la pantalla al cerrar la tapa | Mientras se bloquea el reposo, macOS deja encendida la pantalla integrada aunque la tapa esté cerrada. Apagarla ahorra energía. No hace nada si hay una pantalla externa conectada |
 | Contar la espera de aprobación como trabajo | Actívalo si apruebas de forma remota, por ejemplo desde el móvil. Con esto desactivado, el Mac se duerme mientras una sesión espera tu aprobación |
 
 ## Idiomas
