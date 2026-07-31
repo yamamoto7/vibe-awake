@@ -22,9 +22,9 @@ struct SettingsView: View {
                 setupSection
             }
 
-            Section("一般") {
-                Toggle("スリープ防止を有効にする", isOn: $appState.isEnabled)
-                Toggle("ログイン時に自動起動", isOn: launchAtLoginBinding)
+            Section(L("settings.section.general")) {
+                Toggle(L("settings.enable"), isOn: $appState.isEnabled)
+                Toggle(L("settings.launchAtLogin"), isOn: launchAtLoginBinding)
                 if let launchAtLoginError {
                     Text(launchAtLoginError)
                         .font(.caption)
@@ -34,36 +34,36 @@ struct SettingsView: View {
             .disabled(!appState.helperInstalled)
 
             Section {
-                Toggle("蓋を閉じたら画面を消す", isOn: $appState.sleepDisplayOnLidClose)
-                Text("スリープを防いでいる間、macOS は蓋を閉じても内蔵ディスプレイを点けたままにします。消灯して電力の無駄を防ぎます。外部ディスプレイを接続している場合は何もしません。")
+                Toggle(L("settings.sleepDisplay"), isOn: $appState.sleepDisplayOnLidClose)
+                Text(L("settings.sleepDisplay.note"))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             } header: {
-                Text("ディスプレイ")
+                Text(L("settings.section.display"))
             }
             .disabled(!appState.helperInstalled)
 
             Section {
-                Toggle("承認待ちもスリープ防止の対象にする", isOn: $appState.treatWaitingAsActive)
-                Text("Claude Code が権限の確認などで入力を待っている状態を、作業中とみなすかどうか。スマホなどから遠隔で承認する場合は ON にしてください。")
+                Toggle(L("settings.treatWaitingAsActive"), isOn: $appState.treatWaitingAsActive)
+                Text(L("settings.treatWaitingAsActive.note"))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             } header: {
-                Text("承認待ちの扱い")
+                Text(L("settings.section.approval"))
             }
             .disabled(!appState.helperInstalled)
 
             Section {
                 if appState.summary.total == 0 && !appState.isUsingClaudeProcessFallback {
-                    Text("稼働中のセッションはありません。")
+                    Text(L("settings.noSessions"))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
-                    LabeledContent("作業中") { Text("\(appState.summary.working) 件") }
-                    LabeledContent("承認待ち") { Text("\(appState.summary.waiting) 件") }
-                    LabeledContent("待機中") { Text("\(appState.summary.idle) 件") }
+                    LabeledContent(L("activity.working")) { Text(L("settings.count", appState.summary.working)) }
+                    LabeledContent(L("activity.waiting")) { Text(L("settings.count", appState.summary.waiting)) }
+                    LabeledContent(L("activity.idle")) { Text(L("settings.count", appState.summary.idle)) }
                 }
 
                 Divider()
@@ -77,7 +77,7 @@ struct SettingsView: View {
                 }
 
                 if appState.isUsingClaudeProcessFallback {
-                    Text("Claude Code の状態を取得できません。バージョンが古い可能性があります。プロセスが動いている間はスリープを防止します。")
+                    Text(L("settings.claudeFallback"))
                         .font(.caption)
                         .foregroundStyle(.orange)
                         .fixedSize(horizontal: false, vertical: true)
@@ -101,16 +101,16 @@ struct SettingsView: View {
                         }
                     }
                     if appState.activeSessions.count > 5 {
-                        Text("他 \(appState.activeSessions.count - 5) 件")
+                        Text(L("settings.moreSessions", appState.activeSessions.count - 5))
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
                 }
             } header: {
-                Text("セッション")
+                Text(L("settings.section.sessions"))
             }
 
-            Section("バージョン情報") {
+            Section(L("settings.section.about")) {
                 LabeledContent("Vibe Awake") {
                     Text(versionString).foregroundStyle(.secondary)
                 }
@@ -126,10 +126,10 @@ struct SettingsView: View {
             let sessions = appState.sessions(for: tool)
             if sessions.isEmpty {
                 let fallback = tool == .claudeCode && appState.isUsingClaudeProcessFallback
-                return (tool, fallback ? "起動中(状態不明)" : "セッションなし")
+                return (tool, fallback ? L("settings.tool.unknownState") : L("settings.tool.none"))
             }
             let working = sessions.filter { $0.activity != .idle }.count
-            return (tool, "\(sessions.count) 件中 \(working) 件が作業中")
+            return (tool, L("settings.tool.summary", sessions.count, working))
         }
     }
 
@@ -163,7 +163,7 @@ struct SettingsView: View {
                 }
             }
 
-            DisclosureGroup("インストールされるもの", isExpanded: $showInstalledPaths) {
+            DisclosureGroup(L("setup.installedItems"), isExpanded: $showInstalledPaths) {
                 VStack(alignment: .leading, spacing: 3) {
                     ForEach(SetupCopy.installedPaths, id: \.self) { path in
                         Text(path)
@@ -192,7 +192,7 @@ struct SettingsView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         } header: {
-            Text("蓋クローズ時のスリープ防止")
+            Text(L("settings.section.lidClose"))
         }
     }
 
@@ -203,16 +203,16 @@ struct SettingsView: View {
 
     private var installedHelperSection: some View {
         Section {
-            LabeledContent("状態") {
-                Label("有効", systemImage: "checkmark.shield.fill")
+            LabeledContent(L("settings.helper.state")) {
+                Label(L("settings.helper.enabled"), systemImage: "checkmark.shield.fill")
                     .foregroundStyle(.green)
             }
-            Text("蓋を閉じてもスリープしません。アプリが動いていない間は自動的に無効になります。")
+            Text(L("settings.helper.note"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Button("ヘルパーを削除") {
+            Button(L("settings.helper.remove")) {
                 appState.uninstallHelper()
             }
             .disabled(appState.isInstalling)
@@ -224,7 +224,7 @@ struct SettingsView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         } header: {
-            Text("蓋クローズ時のスリープ防止")
+            Text(L("settings.section.lidClose"))
         }
     }
 

@@ -1,0 +1,59 @@
+/* Vibe Awake — Français */
+
+"activity.working" = "En cours";
+"activity.waiting" = "En attente d'approbation";
+"activity.idle" = "Inactive";
+"activity.unknown" = "Inconnu";
+
+"status.disabled" = "Blocage de la veille : désactivé";
+"status.active" = "Blocage de la veille : actif";
+"status.standby" = "Blocage de la veille : en attente";
+"detail.disabledInSettings" = "Désactivé dans les réglages";
+"detail.claudeStateUnavailable" = "Impossible de lire l'état de Claude Code";
+"detail.noSessions" = "Aucune session en cours";
+"detail.allIdle" = "Toutes les sessions sont inactives";
+"detail.oneWorking" = "%1$@ (%2$@) travaille";
+"detail.manyWorking" = "%d sessions en cours";
+"button.settings" = "Réglages…";
+"button.quit" = "Quitter";
+
+"setup.title" = "Configuration requise";
+"setup.updateTitle" = "Mise à jour requise";
+"setup.reason" = "Un assistant est nécessaire pour gérer la veille lorsque l'écran est rabattu. Il n'est pas encore installé, donc le blocage de la veille ne fonctionne pas.";
+"setup.updateReason" = "L'assistant est d'une version antérieure, donc le blocage de la veille ne fonctionne pas.";
+"setup.passwordNote" = "Vous saisirez votre mot de passe administrateur macOS une seule fois";
+"setup.button" = "Démarrer la configuration";
+"setup.updateButton" = "Mettre à jour";
+"setup.working" = "Configuration…";
+"setup.assurance.once" = "Le mot de passe n'est demandé que la première fois";
+"setup.assurance.scope" = "Seul pmset, le réglage d'énergie intégré à macOS, est modifié";
+"setup.assurance.privacy" = "Aucun accès réseau, aucune donnée collectée";
+"setup.assurance.removable" = "Supprimable à tout moment depuis les réglages";
+"setup.installedItems" = "Ce qui est installé";
+
+"settings.windowTitle" = "Réglages";
+"settings.section.general" = "Général";
+"settings.enable" = "Bloquer la veille";
+"settings.launchAtLogin" = "Ouvrir à l'ouverture de session";
+"settings.section.display" = "Écran";
+"settings.sleepDisplay" = "Éteindre l'écran quand l'ordinateur est rabattu";
+"settings.sleepDisplay.note" = "Pendant le blocage de la veille, macOS laisse l'écran intégré allumé même rabattu. L'éteindre évite de gaspiller de l'énergie. Sans effet si un écran externe est connecté.";
+"settings.section.approval" = "Sessions en attente d'approbation";
+"settings.treatWaitingAsActive" = "Compter l'attente d'approbation comme du travail";
+"settings.treatWaitingAsActive.note" = "Si une session qui attend votre approbation compte comme du travail. Activez ceci si vous approuvez à distance, depuis votre téléphone par exemple.";
+"settings.section.sessions" = "Sessions";
+"settings.noSessions" = "Aucune session en cours.";
+"settings.count" = "%d";
+"settings.claudeFallback" = "Impossible de lire l'état de Claude Code. Il s'agit peut-être d'une version antérieure. La veille est bloquée tant que son processus tourne.";
+"settings.moreSessions" = "%d de plus";
+"settings.tool.none" = "Aucune session";
+"settings.tool.unknownState" = "En cours d'exécution (état inconnu)";
+"settings.tool.summary" = "%2$d sur %1$d en cours";
+"settings.section.lidClose" = "Veille écran rabattu";
+"settings.helper.state" = "État";
+"settings.helper.enabled" = "Activé";
+"settings.helper.note" = "Le Mac reste éveillé écran rabattu. L'assistant se désactive de lui-même dès que l'app ne tourne plus.";
+"settings.helper.remove" = "Supprimer l'assistant";
+"settings.section.about" = "À propos";
+
+"error.scriptWriteFailed" = "Impossible de préparer le script de configuration.";

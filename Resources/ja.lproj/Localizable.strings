@@ -1,0 +1,64 @@
+/* Vibe Awake — 日本語 */
+
+/* --- Session activity --- */
+"activity.working" = "作業中";
+"activity.waiting" = "承認待ち";
+"activity.idle" = "待機中";
+"activity.unknown" = "不明";
+
+/* --- Menu bar popover --- */
+"status.disabled" = "スリープ防止: 無効";
+"status.active" = "スリープ防止: 動作中";
+"status.standby" = "スリープ防止: 待機中";
+"detail.disabledInSettings" = "設定でオフになっています";
+"detail.claudeStateUnavailable" = "Claude Code の状態を取得できません";
+"detail.noSessions" = "稼働中のセッションはありません";
+"detail.allIdle" = "すべて待機中です";
+"detail.oneWorking" = "%1$@ (%2$@) が作業中";
+"detail.manyWorking" = "%d 件のセッションが作業中";
+"button.settings" = "設定...";
+"button.quit" = "終了";
+
+/* --- Setup --- */
+"setup.title" = "セットアップが必要です";
+"setup.updateTitle" = "アップデートが必要です";
+"setup.reason" = "蓋を閉じたときのスリープ状態を管理するヘルパーが必要です。まだ入っていないため、現在スリープ防止は動作しません。";
+"setup.updateReason" = "ヘルパーが古いバージョンのため、現在スリープ防止は動作しません。";
+"setup.passwordNote" = "macOS の管理者パスワードを一度だけ入力します";
+"setup.button" = "セットアップを開始";
+"setup.updateButton" = "アップデート";
+"setup.working" = "セットアップ中...";
+"setup.assurance.once" = "パスワードの入力は初回の1回だけです";
+"setup.assurance.scope" = "行うのは pmset(macOS 標準の電源設定コマンド)の切り替えだけです";
+"setup.assurance.privacy" = "通信・情報収集は一切ありません";
+"setup.assurance.removable" = "設定画面からいつでも削除できます";
+"setup.installedItems" = "インストールされるもの";
+
+/* --- Settings --- */
+"settings.windowTitle" = "設定";
+"settings.section.general" = "一般";
+"settings.enable" = "スリープ防止を有効にする";
+"settings.launchAtLogin" = "ログイン時に自動起動";
+"settings.section.display" = "ディスプレイ";
+"settings.sleepDisplay" = "蓋を閉じたら画面を消す";
+"settings.sleepDisplay.note" = "スリープを防いでいる間、macOS は蓋を閉じても内蔵ディスプレイを点けたままにします。消灯して電力の無駄を防ぎます。外部ディスプレイを接続している場合は何もしません。";
+"settings.section.approval" = "承認待ちの扱い";
+"settings.treatWaitingAsActive" = "承認待ちもスリープ防止の対象にする";
+"settings.treatWaitingAsActive.note" = "Claude Code が権限の確認などで入力を待っている状態を、作業中とみなすかどうか。スマホなどから遠隔で承認する場合は ON にしてください。";
+"settings.section.sessions" = "セッション";
+"settings.noSessions" = "稼働中のセッションはありません。";
+"settings.count" = "%d 件";
+"settings.claudeFallback" = "Claude Code の状態を取得できません。バージョンが古い可能性があります。プロセスが動いている間はスリープを防止します。";
+"settings.moreSessions" = "他 %d 件";
+"settings.tool.none" = "セッションなし";
+"settings.tool.unknownState" = "起動中(状態不明)";
+"settings.tool.summary" = "%1$d 件中 %2$d 件が作業中";
+"settings.section.lidClose" = "蓋クローズ時のスリープ防止";
+"settings.helper.state" = "状態";
+"settings.helper.enabled" = "有効";
+"settings.helper.note" = "蓋を閉じてもスリープしません。アプリが動いていない間は自動的に無効になります。";
+"settings.helper.remove" = "ヘルパーを削除";
+"settings.section.about" = "バージョン情報";
+
+/* --- Errors --- */
+"error.scriptWriteFailed" = "セットアップ用スクリプトの書き込みに失敗しました。";

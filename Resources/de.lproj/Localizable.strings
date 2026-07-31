@@ -1,0 +1,59 @@
+/* Vibe Awake — Deutsch */
+
+"activity.working" = "Arbeitet";
+"activity.waiting" = "Wartet auf Bestätigung";
+"activity.idle" = "Inaktiv";
+"activity.unknown" = "Unbekannt";
+
+"status.disabled" = "Ruhezustand blockieren: aus";
+"status.active" = "Ruhezustand blockieren: aktiv";
+"status.standby" = "Ruhezustand blockieren: bereit";
+"detail.disabledInSettings" = "In den Einstellungen deaktiviert";
+"detail.claudeStateUnavailable" = "Status von Claude Code nicht lesbar";
+"detail.noSessions" = "Keine Sitzungen aktiv";
+"detail.allIdle" = "Alle Sitzungen sind inaktiv";
+"detail.oneWorking" = "%1$@ (%2$@) arbeitet";
+"detail.manyWorking" = "%d Sitzungen arbeiten";
+"button.settings" = "Einstellungen…";
+"button.quit" = "Beenden";
+
+"setup.title" = "Einrichtung erforderlich";
+"setup.updateTitle" = "Aktualisierung erforderlich";
+"setup.reason" = "Für den Ruhezustand bei geschlossenem Deckel wird ein Hilfsprogramm benötigt. Es ist noch nicht installiert, daher funktioniert das Blockieren nicht.";
+"setup.updateReason" = "Das Hilfsprogramm ist veraltet, daher funktioniert das Blockieren nicht.";
+"setup.passwordNote" = "Du gibst dein macOS-Administratorkennwort einmalig ein";
+"setup.button" = "Einrichtung starten";
+"setup.updateButton" = "Aktualisieren";
+"setup.working" = "Wird eingerichtet…";
+"setup.assurance.once" = "Das Kennwort wird nur beim ersten Mal abgefragt";
+"setup.assurance.scope" = "Es wird nur pmset umgeschaltet, die in macOS integrierte Energieeinstellung";
+"setup.assurance.privacy" = "Kein Netzwerkzugriff, keine Datenerfassung";
+"setup.assurance.removable" = "Jederzeit über die Einstellungen entfernbar";
+"setup.installedItems" = "Was installiert wird";
+
+"settings.windowTitle" = "Einstellungen";
+"settings.section.general" = "Allgemein";
+"settings.enable" = "Ruhezustand blockieren";
+"settings.launchAtLogin" = "Bei der Anmeldung öffnen";
+"settings.section.display" = "Bildschirm";
+"settings.sleepDisplay" = "Bildschirm ausschalten, wenn der Deckel geschlossen wird";
+"settings.sleepDisplay.note" = "Während der Ruhezustand blockiert ist, lässt macOS den eingebauten Bildschirm auch bei geschlossenem Deckel an. Ihn auszuschalten spart Strom. Bei angeschlossenem externen Bildschirm passiert nichts.";
+"settings.section.approval" = "Warten auf Bestätigung";
+"settings.treatWaitingAsActive" = "Warten auf Bestätigung als Arbeit werten";
+"settings.treatWaitingAsActive.note" = "Ob eine Sitzung, die auf deine Bestätigung wartet, als arbeitend gilt. Aktiviere dies, wenn du aus der Ferne bestätigst, etwa vom Telefon.";
+"settings.section.sessions" = "Sitzungen";
+"settings.noSessions" = "Keine Sitzungen aktiv.";
+"settings.count" = "%d";
+"settings.claudeFallback" = "Status von Claude Code nicht lesbar. Möglicherweise eine ältere Version. Der Ruhezustand wird blockiert, solange der Prozess läuft.";
+"settings.moreSessions" = "%d weitere";
+"settings.tool.none" = "Keine Sitzungen";
+"settings.tool.unknownState" = "Läuft (Status unbekannt)";
+"settings.tool.summary" = "%2$d von %1$d arbeiten";
+"settings.section.lidClose" = "Ruhezustand bei geschlossenem Deckel";
+"settings.helper.state" = "Status";
+"settings.helper.enabled" = "Aktiviert";
+"settings.helper.note" = "Der Mac bleibt bei geschlossenem Deckel wach. Das Hilfsprogramm schaltet sich selbst ab, sobald die App nicht mehr läuft.";
+"settings.helper.remove" = "Hilfsprogramm entfernen";
+"settings.section.about" = "Über";
+
+"error.scriptWriteFailed" = "Das Einrichtungsskript konnte nicht vorbereitet werden.";

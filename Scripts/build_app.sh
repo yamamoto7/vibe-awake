@@ -29,6 +29,16 @@ mkdir -p "$APP_DIR/Contents/MacOS" "$APP_DIR/Contents/Resources"
 
 cp "$BUILD_DIR/VibeAwake" "$APP_DIR/Contents/MacOS/VibeAwake"
 
+# Localizations live as .lproj bundles in Resources/ and are copied verbatim, so
+# NSLocalizedString finds them in Bundle.main.
+LOCALIZATIONS=""
+for lproj in Resources/*.lproj; do
+  [ -d "$lproj" ] || continue
+  cp -R "$lproj" "$APP_DIR/Contents/Resources/"
+  LOCALIZATIONS="${LOCALIZATIONS}        <string>$(basename "$lproj" .lproj)</string>
+"
+done
+
 ICON_KEYS=""
 if [ -f "Resources/AppIcon.icns" ]; then
   cp "Resources/AppIcon.icns" "$APP_DIR/Contents/Resources/AppIcon.icns"
@@ -54,6 +64,11 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
     <key>CFBundleVersion</key>
     <string>${BUILD_NUMBER}</string>
 ${ICON_KEYS}
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+${LOCALIZATIONS}    </array>
     <key>LSUIElement</key>
     <true/>
     <key>LSMinimumSystemVersion</key>

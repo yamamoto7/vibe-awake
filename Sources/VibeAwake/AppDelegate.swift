@@ -61,13 +61,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         displaySleepController.start()
     }
 
-    func applicationWillTerminate(_ notification: Notification) {
-        claudeMonitor.stop()
-        codexMonitor.stop()
-        displaySleepController.stop()
-        appState.shutdown()
-    }
-
     private func updateIcon(isBlocking: Bool, helperInstalled: Bool) {
         guard let button = statusItem.button else { return }
         // Without the helper the app blocks nothing at all, so the icon says so outright
@@ -88,7 +81,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 rootView: SettingsView(appState: appState)
             )
             let window = NSWindow(contentViewController: hosting)
-            window.title = "設定"
+            window.title = L("settings.windowTitle")
             window.styleMask = [.titled, .closable, .miniaturizable]
             window.isReleasedWhenClosed = false
             window.center()

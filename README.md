@@ -1,7 +1,8 @@
 <div align="center">
   <img src="Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
-  <p>AI コーディングセッションが動いている間だけ、Mac を寝かせない。</p>
+  <p>Keeps your Mac awake only while an AI coding session is actually working.</p>
+  <p>English · <a href="README.ja.md">日本語</a></p>
 </div>
 
 ```bash
@@ -10,28 +11,28 @@ brew install --cask vibe-awake
 ```
 
 > [!NOTE]
-> 初回起動時に管理者パスワードを一度だけ求められます。macOS の仕様上、蓋を閉じたときのスリープを止めるのに必要です → [初回セットアップ](#初回セットアップ)
+> You'll be asked for your administrator password once on first launch. macOS only lets a privileged helper stop the Mac sleeping with the lid closed → [Setup](#setup)
 
-## これは何?
+## What it does
 
-Claude Code や Codex CLI に長い作業を任せて席を離れると、Mac がスリープして作業が止まってしまいます。Vibe Awake はメニューバーに常駐して、**セッションが実際に応答を生成している間だけ**スリープを防ぎます。**MacBook の蓋を閉じても止まりません。**
+Hand Claude Code or Codex CLI a long task, step away, and your Mac goes to sleep with the work half done. Vibe Awake sits in the menu bar and blocks sleep **only while a session is generating a response** — **including with the MacBook's lid closed**.
 
-`caffeinate` のような常時オンの方式とは違い、プロンプト待ちで放置している間は普通にスリープします。バッテリーを無駄に消費しません。
+Unlike leaving `caffeinate` running, a session parked at the prompt lets the Mac sleep normally. No battery burned waiting for you to come back.
 
-## 対応ツール
+## Supported tools
 
-| | 対応 |
+| | Supported |
 |---|:---:|
-| Claude Code (ターミナル) | ✅ |
-| Codex CLI (ターミナル) | ✅ |
-| Claude デスクトップアプリ | ― |
+| Claude Code (terminal) | ✅ |
+| Codex CLI (terminal) | ✅ |
+| Claude desktop app | ― |
 | Cursor | ― |
 
-ヘッドレス実行 (`claude -p` / `codex exec`) は対象外です。
+Headless runs (`claude -p`, `codex exec`) are out of scope.
 
-## インストール
+## Install
 
-動作環境は **macOS 13 (Ventura) 以降** です。
+Requires **macOS 13 (Ventura) or later**.
 
 ### Homebrew
 
@@ -40,68 +41,80 @@ brew tap yamamoto7/tap
 brew install --cask vibe-awake
 ```
 
-アップデートとアンインストールも Homebrew から行えます。
+Updating and uninstalling go through Homebrew too.
 
 ```bash
 brew upgrade --cask vibe-awake
-brew uninstall --cask vibe-awake   # ヘルパーもまとめて削除されます
+brew uninstall --cask vibe-awake   # removes the helper as well
 ```
 
-### 手動
+### Manually
 
-[Releases](https://github.com/yamamoto7/vibe-awake/releases) から `.dmg` をダウンロードし、`Vibe Awake.app` を `アプリケーション` フォルダにドラッグしてください。
+Download the `.dmg` from [Releases](https://github.com/yamamoto7/vibe-awake/releases) and drag `Vibe Awake.app` into `Applications`.
 
-## 初回セットアップ
+## Setup
 
-初回起動時に **管理者パスワードを一度だけ** 求められます。
+On first launch you'll be asked for your **administrator password, once**.
 
-macOS では、蓋を閉じたときのスリープは管理者権限を持つプログラムからしか止められないためです。インストールされるヘルパーは電源設定 (`pmset`) を切り替えるだけのもので、通信も情報収集も行いません。設定画面からいつでも削除できます。
+macOS only lets a program with administrator rights stop the Mac from sleeping when the lid is closed. The helper that gets installed does nothing but toggle the built-in power setting (`pmset`) — no network access, no data collected. You can remove it at any time from Settings.
 
-セットアップが完了するまで、スリープ防止は動作しません。
+Sleep blocking does nothing until setup is finished.
 
-## 使い方
+## Using it
 
-メニューバーのアイコンをクリックすると、現在の状態が表示されます。
+Click the menu bar icon to see what's happening.
 
-- **作業中** — 応答生成中・ツール実行中
-- **承認待ち** — 権限の確認などで入力を待っている
-- **待機中** — プロンプト待ち
+- **Working** — generating a response or running a tool
+- **Awaiting approval** — waiting for you to confirm something
+- **Idle** — sitting at the prompt
 
-アイコンが塗りつぶされている間はスリープを防止しています。オレンジの警告アイコンはセットアップが未完了のサインです。
+A filled-in icon means sleep is being blocked. An orange warning icon means setup hasn't been done.
 
-## 設定
+## Settings
 
-| 項目 | 説明 |
+| | |
 |---|---|
-| スリープ防止を有効にする | 一時的にオフにできます |
-| ログイン時に自動起動 | Mac の起動時に常駐させます |
-| 承認待ちもスリープ防止の対象にする | スマホなどから遠隔で承認する場合は ON にしてください。OFF にすると承認待ちの間はスリープします |
-| 蓋を閉じたら画面を消す | スリープを防いでいる間、macOS は蓋を閉じても内蔵ディスプレイを点けたままにします。消灯して電力の無駄を防ぎます。外部ディスプレイ接続時は何もしません |
+| Block sleep | Turn the whole thing off temporarily |
+| Open at login | Start with your Mac |
+| Turn the display off when the lid closes | While sleep is blocked, macOS leaves the built-in display on behind a closed lid. Turning it off saves power. Does nothing when an external display is connected |
+| Count awaiting approval as working | Turn this on if you approve remotely, such as from your phone. With it off, the Mac sleeps while a session waits for approval |
 
-## 注意事項
+## Languages
 
-各 CLI が公開していない内部の状態ファイルを読んで判定しているため、**ツール側のアップデートで動作しなくなる可能性があります**。動かなくなった場合は [Issues](https://github.com/yamamoto7/vibe-awake/issues) で知らせてください。
+English, 日本語, 简体中文, 한국어, Español, Français, Deutsch, Português (Brasil), Русский. The app follows your macOS language setting.
 
-本ソフトウェアは Anthropic および OpenAI とは無関係の非公式ツールです。Claude、Claude Code、Codex は各社の商標です。
+## Caveats
 
-## ソースからビルドする
+Detection reads internal state files that neither CLI documents, so **an update to those tools can break it**. If it stops working, please open an [issue](https://github.com/yamamoto7/vibe-awake/issues).
 
-Swift 5.9 以降が必要です。
+This is an unofficial tool, not affiliated with Anthropic or OpenAI. Claude, Claude Code and Codex are trademarks of their respective owners.
 
-```bash
-swift build                        # 開発用ビルド
-./Scripts/build_app.sh             # .app を生成 (dist/)
-```
+## Building from source
 
-配布用ビルドには Developer ID 証明書が必要です。
+Requires Swift 5.9 or later.
 
 ```bash
-./Scripts/build_app.sh --release   # Developer ID 署名 + Hardened Runtime
-./Scripts/notarize.sh              # DMG 作成 + notarization
+swift build                          # development build
+./Scripts/build_app.sh               # produce the .app in dist/
+./Scripts/check_localizations.sh     # verify translations are in sync
 ```
 
-判定ロジックや設計上の判断の理由は、各ソースファイルのコメントに記載しています。
+Distribution builds need a Developer ID certificate.
 
-## ライセンス
+```bash
+./Scripts/build_app.sh --release     # Developer ID signature + Hardened Runtime
+./Scripts/notarize.sh                # build the DMG and notarize it
+```
+
+### Translations
+
+Each language is a `Localizable.strings` file under `Resources/<lang>.lproj/`. English is the
+development language, so a key missing elsewhere falls back to it rather than showing the raw
+key. `Scripts/check_localizations.sh` reports keys that are missing, unused or undefined —
+run it after touching any string.
+
+The reasoning behind the detection logic and the design decisions lives in the source comments.
+
+## License
 
 [MIT](LICENSE)

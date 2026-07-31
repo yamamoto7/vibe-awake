@@ -47,7 +47,7 @@ enum HelperInstaller {
         var errorDescription: String? {
             switch self {
             case .scriptWriteFailed:
-                return "セットアップ用スクリプトの書き込みに失敗しました。"
+                return L("error.scriptWriteFailed")
             case .appleScriptFailed(let message):
                 return message
             }

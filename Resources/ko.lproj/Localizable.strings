@@ -1,0 +1,59 @@
+/* Vibe Awake — 한국어 */
+
+"activity.working" = "작업 중";
+"activity.waiting" = "승인 대기 중";
+"activity.idle" = "대기 중";
+"activity.unknown" = "알 수 없음";
+
+"status.disabled" = "잠자기 방지: 꺼짐";
+"status.active" = "잠자기 방지: 작동 중";
+"status.standby" = "잠자기 방지: 대기";
+"detail.disabledInSettings" = "설정에서 꺼져 있습니다";
+"detail.claudeStateUnavailable" = "Claude Code의 상태를 읽을 수 없습니다";
+"detail.noSessions" = "실행 중인 세션이 없습니다";
+"detail.allIdle" = "모든 세션이 대기 중입니다";
+"detail.oneWorking" = "%1$@(%2$@)이(가) 작업 중";
+"detail.manyWorking" = "%d개 세션이 작업 중";
+"button.settings" = "설정…";
+"button.quit" = "종료";
+
+"setup.title" = "설정이 필요합니다";
+"setup.updateTitle" = "업데이트가 필요합니다";
+"setup.reason" = "덮개를 닫았을 때의 잠자기 상태를 관리할 헬퍼가 필요합니다. 아직 설치되지 않아 잠자기 방지가 작동하지 않습니다.";
+"setup.updateReason" = "헬퍼가 이전 버전이라 잠자기 방지가 작동하지 않습니다.";
+"setup.passwordNote" = "macOS 관리자 암호를 한 번만 입력합니다";
+"setup.button" = "설정 시작";
+"setup.updateButton" = "업데이트";
+"setup.working" = "설정 중…";
+"setup.assurance.once" = "암호 입력은 처음 한 번뿐입니다";
+"setup.assurance.scope" = "macOS 기본 전원 설정 명령인 pmset만 전환합니다";
+"setup.assurance.privacy" = "네트워크 통신도, 정보 수집도 하지 않습니다";
+"setup.assurance.removable" = "설정에서 언제든지 제거할 수 있습니다";
+"setup.installedItems" = "설치되는 항목";
+
+"settings.windowTitle" = "설정";
+"settings.section.general" = "일반";
+"settings.enable" = "잠자기 방지 사용";
+"settings.launchAtLogin" = "로그인 시 실행";
+"settings.section.display" = "디스플레이";
+"settings.sleepDisplay" = "덮개를 닫으면 화면 끄기";
+"settings.sleepDisplay.note" = "잠자기를 방지하는 동안 macOS는 덮개를 닫아도 내장 디스플레이를 켜 둡니다. 화면을 꺼서 전력 낭비를 막습니다. 외장 디스플레이가 연결된 경우에는 아무것도 하지 않습니다.";
+"settings.section.approval" = "승인 대기 처리";
+"settings.treatWaitingAsActive" = "승인 대기도 작업 중으로 간주";
+"settings.treatWaitingAsActive.note" = "Claude Code가 권한 확인 등으로 입력을 기다리는 상태를 작업 중으로 볼지 여부입니다. 휴대폰 등에서 원격으로 승인한다면 켜 두세요.";
+"settings.section.sessions" = "세션";
+"settings.noSessions" = "실행 중인 세션이 없습니다.";
+"settings.count" = "%d개";
+"settings.claudeFallback" = "Claude Code의 상태를 읽을 수 없습니다. 이전 버전일 수 있습니다. 프로세스가 실행되는 동안 잠자기를 방지합니다.";
+"settings.moreSessions" = "그 외 %d개";
+"settings.tool.none" = "세션 없음";
+"settings.tool.unknownState" = "실행 중(상태 불명)";
+"settings.tool.summary" = "%1$d개 중 %2$d개 작업 중";
+"settings.section.lidClose" = "덮개를 닫았을 때의 잠자기 방지";
+"settings.helper.state" = "상태";
+"settings.helper.enabled" = "사용 중";
+"settings.helper.note" = "덮개를 닫아도 잠자기에 들어가지 않습니다. 앱이 실행되지 않는 동안에는 헬퍼가 자동으로 비활성화됩니다.";
+"settings.helper.remove" = "헬퍼 제거";
+"settings.section.about" = "정보";
+
+"error.scriptWriteFailed" = "설정 스크립트를 준비하지 못했습니다.";

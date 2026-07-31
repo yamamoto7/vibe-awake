@@ -10,22 +10,24 @@ struct DashboardView: View {
     }
 
     private var statusTitle: String {
-        guard appState.isEnabled else { return "スリープ防止: 無効" }
-        return appState.isBlockingSleep ? "スリープ防止: 動作中" : "スリープ防止: 待機中"
+        guard appState.isEnabled else { return L("status.disabled") }
+        return L(appState.isBlockingSleep ? "status.active" : "status.standby")
     }
 
     private var statusDetail: String {
-        if !appState.isEnabled { return "設定でオフになっています" }
-        if appState.isUsingClaudeProcessFallback { return "状態を取得できないバージョンです" }
+        if !appState.isEnabled { return L("detail.disabledInSettings") }
+        if appState.isUsingClaudeProcessFallback { return L("detail.claudeStateUnavailable") }
 
         let active = appState.activeSessions
         if active.isEmpty {
             return appState.summary.total == 0
-                ? "稼働中のセッションはありません"
-                : "すべて待機中です"
+                ? L("detail.noSessions")
+                : L("detail.allIdle")
         }
-        if active.count == 1 { return "\(active[0].displayName) (\(active[0].tool.displayName)) が作業中" }
-        return "\(active.count) 件のセッションが作業中"
+        if active.count == 1 {
+            return L("detail.oneWorking", active[0].displayName, active[0].tool.displayName)
+        }
+        return L("detail.manyWorking", active.count)
     }
 
     var body: some View {
@@ -39,9 +41,9 @@ struct DashboardView: View {
             Divider()
 
             HStack {
-                Button("設定...") { onOpenSettings() }
+                Button(L("button.settings")) { onOpenSettings() }
                 Spacer()
-                Button("終了") { NSApp.terminate(nil) }
+                Button(L("button.quit")) { NSApp.terminate(nil) }
             }
         }
         .padding(14)
@@ -69,9 +71,9 @@ struct DashboardView: View {
         if appState.summary.total > 0 {
             Divider()
             HStack(spacing: 0) {
-                countCell("作業中", appState.summary.working, .green)
-                countCell("承認待ち", appState.summary.waiting, .orange)
-                countCell("待機中", appState.summary.idle, .secondary)
+                countCell(L("activity.working"), appState.summary.working, .green)
+                countCell(L("activity.waiting"), appState.summary.waiting, .orange)
+                countCell(L("activity.idle"), appState.summary.idle, .secondary)
             }
         }
     }

@@ -29,10 +29,10 @@ enum SessionActivity {
 
     var label: String {
         switch self {
-        case .working: return "作業中"
-        case .waitingForApproval: return "承認待ち"
-        case .idle: return "待機中"
-        case .unknown: return "不明"
+        case .working: return L("activity.working")
+        case .waitingForApproval: return L("activity.waiting")
+        case .idle: return L("activity.idle")
+        case .unknown: return L("activity.unknown")
         }
     }
 

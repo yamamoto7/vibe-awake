@@ -1,0 +1,59 @@
+/* Vibe Awake — Português (Brasil) */
+
+"activity.working" = "Trabalhando";
+"activity.waiting" = "Aguardando aprovação";
+"activity.idle" = "Ociosa";
+"activity.unknown" = "Desconhecido";
+
+"status.disabled" = "Bloqueio de repouso: desativado";
+"status.active" = "Bloqueio de repouso: ativo";
+"status.standby" = "Bloqueio de repouso: em espera";
+"detail.disabledInSettings" = "Desativado nos ajustes";
+"detail.claudeStateUnavailable" = "Não é possível ler o estado do Claude Code";
+"detail.noSessions" = "Nenhuma sessão em execução";
+"detail.allIdle" = "Todas as sessões estão ociosas";
+"detail.oneWorking" = "%1$@ (%2$@) está trabalhando";
+"detail.manyWorking" = "%d sessões trabalhando";
+"button.settings" = "Ajustes…";
+"button.quit" = "Sair";
+
+"setup.title" = "Configuração necessária";
+"setup.updateTitle" = "Atualização necessária";
+"setup.reason" = "É preciso um auxiliar para gerenciar o repouso com a tampa fechada. Ele ainda não está instalado, então o bloqueio de repouso não funciona.";
+"setup.updateReason" = "O auxiliar é de uma versão anterior, então o bloqueio de repouso não funciona.";
+"setup.passwordNote" = "Você digitará sua senha de administrador do macOS uma única vez";
+"setup.button" = "Iniciar configuração";
+"setup.updateButton" = "Atualizar";
+"setup.working" = "Configurando…";
+"setup.assurance.once" = "A senha é pedida apenas na primeira vez";
+"setup.assurance.scope" = "Apenas alterna o pmset, o ajuste de energia nativo do macOS";
+"setup.assurance.privacy" = "Sem acesso à rede e sem coleta de dados";
+"setup.assurance.removable" = "Pode ser removido a qualquer momento pelos ajustes";
+"setup.installedItems" = "O que será instalado";
+
+"settings.windowTitle" = "Ajustes";
+"settings.section.general" = "Geral";
+"settings.enable" = "Bloquear repouso";
+"settings.launchAtLogin" = "Abrir ao iniciar sessão";
+"settings.section.display" = "Tela";
+"settings.sleepDisplay" = "Desligar a tela ao fechar a tampa";
+"settings.sleepDisplay.note" = "Enquanto o repouso está bloqueado, o macOS mantém a tela interna ligada mesmo com a tampa fechada. Desligá-la evita desperdício de energia. Não faz nada quando há uma tela externa conectada.";
+"settings.section.approval" = "Aguardando aprovação";
+"settings.treatWaitingAsActive" = "Contar espera por aprovação como trabalho";
+"settings.treatWaitingAsActive.note" = "Se uma sessão esperando sua aprovação conta como trabalho. Ative se você aprova remotamente, pelo celular por exemplo.";
+"settings.section.sessions" = "Sessões";
+"settings.noSessions" = "Nenhuma sessão em execução.";
+"settings.count" = "%d";
+"settings.claudeFallback" = "Não é possível ler o estado do Claude Code. Pode ser uma versão anterior. O repouso é bloqueado enquanto o processo estiver em execução.";
+"settings.moreSessions" = "mais %d";
+"settings.tool.none" = "Nenhuma sessão";
+"settings.tool.unknownState" = "Em execução (estado desconhecido)";
+"settings.tool.summary" = "%2$d de %1$d trabalhando";
+"settings.section.lidClose" = "Repouso com a tampa fechada";
+"settings.helper.state" = "Estado";
+"settings.helper.enabled" = "Ativado";
+"settings.helper.note" = "O Mac continua acordado com a tampa fechada. O auxiliar se desativa sozinho sempre que o app não está em execução.";
+"settings.helper.remove" = "Remover auxiliar";
+"settings.section.about" = "Sobre";
+
+"error.scriptWriteFailed" = "Não foi possível preparar o script de configuração.";

@@ -1,0 +1,59 @@
+/* Vibe Awake — Русский */
+
+"activity.working" = "Работает";
+"activity.waiting" = "Ожидает подтверждения";
+"activity.idle" = "Простой";
+"activity.unknown" = "Неизвестно";
+
+"status.disabled" = "Блокировка сна: выключена";
+"status.active" = "Блокировка сна: активна";
+"status.standby" = "Блокировка сна: ожидание";
+"detail.disabledInSettings" = "Отключено в настройках";
+"detail.claudeStateUnavailable" = "Не удаётся прочитать состояние Claude Code";
+"detail.noSessions" = "Нет запущенных сессий";
+"detail.allIdle" = "Все сессии простаивают";
+"detail.oneWorking" = "%1$@ (%2$@) работает";
+"detail.manyWorking" = "Работает сессий: %d";
+"button.settings" = "Настройки…";
+"button.quit" = "Выйти";
+
+"setup.title" = "Требуется настройка";
+"setup.updateTitle" = "Требуется обновление";
+"setup.reason" = "Для управления сном при закрытой крышке нужен вспомогательный компонент. Он ещё не установлен, поэтому блокировка сна не работает.";
+"setup.updateReason" = "Вспомогательный компонент устарел, поэтому блокировка сна не работает.";
+"setup.passwordNote" = "Пароль администратора macOS понадобится один раз";
+"setup.button" = "Начать настройку";
+"setup.updateButton" = "Обновить";
+"setup.working" = "Настройка…";
+"setup.assurance.once" = "Пароль запрашивается только в первый раз";
+"setup.assurance.scope" = "Переключается только pmset — встроенная настройка питания macOS";
+"setup.assurance.privacy" = "Без доступа к сети и без сбора данных";
+"setup.assurance.removable" = "Можно удалить в любой момент из настроек";
+"setup.installedItems" = "Что будет установлено";
+
+"settings.windowTitle" = "Настройки";
+"settings.section.general" = "Основные";
+"settings.enable" = "Блокировать сон";
+"settings.launchAtLogin" = "Запускать при входе";
+"settings.section.display" = "Дисплей";
+"settings.sleepDisplay" = "Выключать экран при закрытии крышки";
+"settings.sleepDisplay.note" = "Пока сон заблокирован, macOS оставляет встроенный дисплей включённым даже с закрытой крышкой. Его выключение экономит энергию. При подключённом внешнем дисплее ничего не происходит.";
+"settings.section.approval" = "Ожидание подтверждения";
+"settings.treatWaitingAsActive" = "Считать ожидание подтверждения работой";
+"settings.treatWaitingAsActive.note" = "Считать ли сессию, ожидающую вашего подтверждения, работающей. Включите, если подтверждаете удалённо, например с телефона.";
+"settings.section.sessions" = "Сессии";
+"settings.noSessions" = "Нет запущенных сессий.";
+"settings.count" = "%d";
+"settings.claudeFallback" = "Не удаётся прочитать состояние Claude Code. Возможно, это устаревшая версия. Сон блокируется, пока выполняется её процесс.";
+"settings.moreSessions" = "ещё %d";
+"settings.tool.none" = "Нет сессий";
+"settings.tool.unknownState" = "Запущено (состояние неизвестно)";
+"settings.tool.summary" = "Работает %2$d из %1$d";
+"settings.section.lidClose" = "Сон при закрытой крышке";
+"settings.helper.state" = "Состояние";
+"settings.helper.enabled" = "Включено";
+"settings.helper.note" = "Mac не засыпает с закрытой крышкой. Компонент сам отключается, когда приложение не запущено.";
+"settings.helper.remove" = "Удалить компонент";
+"settings.section.about" = "О программе";
+
+"error.scriptWriteFailed" = "Не удалось подготовить скрипт настройки.";

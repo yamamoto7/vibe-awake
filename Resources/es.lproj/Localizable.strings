@@ -1,0 +1,59 @@
+/* Vibe Awake — Español */
+
+"activity.working" = "Trabajando";
+"activity.waiting" = "Esperando aprobación";
+"activity.idle" = "Inactiva";
+"activity.unknown" = "Desconocido";
+
+"status.disabled" = "Bloqueo de reposo: desactivado";
+"status.active" = "Bloqueo de reposo: activo";
+"status.standby" = "Bloqueo de reposo: en espera";
+"detail.disabledInSettings" = "Desactivado en los ajustes";
+"detail.claudeStateUnavailable" = "No se puede leer el estado de Claude Code";
+"detail.noSessions" = "No hay sesiones en ejecución";
+"detail.allIdle" = "Todas las sesiones están inactivas";
+"detail.oneWorking" = "%1$@ (%2$@) está trabajando";
+"detail.manyWorking" = "%d sesiones trabajando";
+"button.settings" = "Ajustes…";
+"button.quit" = "Salir";
+
+"setup.title" = "Configuración necesaria";
+"setup.updateTitle" = "Actualización necesaria";
+"setup.reason" = "Se necesita un asistente para gestionar el reposo con la tapa cerrada. Aún no está instalado, así que el bloqueo de reposo no funciona.";
+"setup.updateReason" = "El asistente es de una versión anterior, así que el bloqueo de reposo no funciona.";
+"setup.passwordNote" = "Introducirás tu contraseña de administrador de macOS una sola vez";
+"setup.button" = "Comenzar configuración";
+"setup.updateButton" = "Actualizar";
+"setup.working" = "Configurando…";
+"setup.assurance.once" = "La contraseña solo se pide la primera vez";
+"setup.assurance.scope" = "Solo cambia pmset, el ajuste de energía integrado en macOS";
+"setup.assurance.privacy" = "Sin acceso a la red ni recopilación de datos";
+"setup.assurance.removable" = "Se puede eliminar en cualquier momento desde los ajustes";
+"setup.installedItems" = "Qué se instala";
+
+"settings.windowTitle" = "Ajustes";
+"settings.section.general" = "General";
+"settings.enable" = "Bloquear el reposo";
+"settings.launchAtLogin" = "Abrir al iniciar sesión";
+"settings.section.display" = "Pantalla";
+"settings.sleepDisplay" = "Apagar la pantalla al cerrar la tapa";
+"settings.sleepDisplay.note" = "Mientras se bloquea el reposo, macOS mantiene encendida la pantalla integrada aunque la tapa esté cerrada. Apagarla evita gastar batería. No hace nada si hay una pantalla externa conectada.";
+"settings.section.approval" = "Sesiones esperando aprobación";
+"settings.treatWaitingAsActive" = "Contar la espera de aprobación como trabajo";
+"settings.treatWaitingAsActive.note" = "Si una sesión que espera tu aprobación cuenta como trabajo. Actívalo si apruebas de forma remota, por ejemplo desde el móvil.";
+"settings.section.sessions" = "Sesiones";
+"settings.noSessions" = "No hay sesiones en ejecución.";
+"settings.count" = "%d";
+"settings.claudeFallback" = "No se puede leer el estado de Claude Code. Puede ser una versión anterior. Se bloquea el reposo mientras su proceso esté en ejecución.";
+"settings.moreSessions" = "%d más";
+"settings.tool.none" = "Sin sesiones";
+"settings.tool.unknownState" = "En ejecución (estado desconocido)";
+"settings.tool.summary" = "%2$d de %1$d trabajando";
+"settings.section.lidClose" = "Reposo con la tapa cerrada";
+"settings.helper.state" = "Estado";
+"settings.helper.enabled" = "Activado";
+"settings.helper.note" = "El Mac permanece activo con la tapa cerrada. El asistente se desactiva solo cuando la app no está en ejecución.";
+"settings.helper.remove" = "Eliminar asistente";
+"settings.section.about" = "Acerca de";
+
+"error.scriptWriteFailed" = "No se pudo preparar el script de configuración.";

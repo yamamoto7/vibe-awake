@@ -1,0 +1,71 @@
+/* Vibe Awake — English (development language).
+   Keys are grouped by where they appear. Anything missing from another language falls
+   back to this file, so every key must exist here. */
+
+/* --- Session activity --- */
+"activity.working" = "Working";
+"activity.waiting" = "Awaiting approval";
+"activity.idle" = "Idle";
+"activity.unknown" = "Unknown";
+
+/* --- Menu bar popover --- */
+"status.disabled" = "Sleep blocking: off";
+"status.active" = "Sleep blocking: on";
+"status.standby" = "Sleep blocking: standby";
+"detail.disabledInSettings" = "Turned off in settings";
+"detail.claudeStateUnavailable" = "Cannot read Claude Code's state";
+"detail.noSessions" = "No sessions running";
+"detail.allIdle" = "All sessions idle";
+/* %1$@ session name, %2$@ tool name */
+"detail.oneWorking" = "%1$@ (%2$@) is working";
+/* %d number of sessions */
+"detail.manyWorking" = "%d sessions working";
+"button.settings" = "Settings…";
+"button.quit" = "Quit";
+
+/* --- Setup --- */
+"setup.title" = "Setup required";
+"setup.updateTitle" = "Update required";
+"setup.reason" = "A helper is needed to manage sleep while the lid is closed. It isn't installed yet, so sleep blocking is not working.";
+"setup.updateReason" = "The helper is an older version, so sleep blocking is not working.";
+"setup.passwordNote" = "You'll enter your macOS administrator password once";
+"setup.button" = "Begin setup";
+"setup.updateButton" = "Update";
+"setup.working" = "Setting up…";
+"setup.assurance.once" = "The password is asked for only the first time";
+"setup.assurance.scope" = "It only toggles pmset, the built-in macOS power setting";
+"setup.assurance.privacy" = "No network access, no data collected";
+"setup.assurance.removable" = "Removable at any time from settings";
+"setup.installedItems" = "What gets installed";
+
+/* --- Settings --- */
+"settings.windowTitle" = "Settings";
+"settings.section.general" = "General";
+"settings.enable" = "Block sleep";
+"settings.launchAtLogin" = "Open at login";
+"settings.section.display" = "Display";
+"settings.sleepDisplay" = "Turn the display off when the lid closes";
+"settings.sleepDisplay.note" = "While sleep is blocked, macOS leaves the built-in display on even with the lid closed. Turning it off avoids wasting power. Does nothing when an external display is connected.";
+"settings.section.approval" = "Awaiting approval";
+"settings.treatWaitingAsActive" = "Count awaiting approval as working";
+"settings.treatWaitingAsActive.note" = "Whether a session waiting for you to approve something counts as working. Turn this on if you approve remotely, such as from your phone.";
+"settings.section.sessions" = "Sessions";
+"settings.noSessions" = "No sessions running.";
+/* %d count */
+"settings.count" = "%d";
+"settings.claudeFallback" = "Cannot read Claude Code's state. It may be an older version. Sleep is blocked while its process is running.";
+/* %d remaining sessions */
+"settings.moreSessions" = "%d more";
+"settings.tool.none" = "No sessions";
+"settings.tool.unknownState" = "Running (state unknown)";
+/* %1$d total, %2$d working */
+"settings.tool.summary" = "%2$d of %1$d working";
+"settings.section.lidClose" = "Sleep with the lid closed";
+"settings.helper.state" = "Status";
+"settings.helper.enabled" = "Enabled";
+"settings.helper.note" = "The Mac stays awake with the lid closed. The helper turns itself off whenever the app isn't running.";
+"settings.helper.remove" = "Remove helper";
+"settings.section.about" = "About";
+
+/* --- Errors --- */
+"error.scriptWriteFailed" = "Could not prepare the setup script.";
