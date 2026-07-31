@@ -34,6 +34,17 @@ struct SettingsView: View {
             .disabled(!appState.helperInstalled)
 
             Section {
+                Toggle("蓋を閉じたら画面を消す", isOn: $appState.sleepDisplayOnLidClose)
+                Text("スリープを防いでいる間、macOS は蓋を閉じても内蔵ディスプレイを点けたままにします。消灯して電力の無駄を防ぎます。外部ディスプレイを接続している場合は何もしません。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            } header: {
+                Text("ディスプレイ")
+            }
+            .disabled(!appState.helperInstalled)
+
+            Section {
                 Toggle("承認待ちもスリープ防止の対象にする", isOn: $appState.treatWaitingAsActive)
                 Text("Claude Code が権限の確認などで入力を待っている状態を、作業中とみなすかどうか。スマホなどから遠隔で承認する場合は ON にしてください。")
                     .font(.caption)

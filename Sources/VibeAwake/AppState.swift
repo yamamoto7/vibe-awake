@@ -7,6 +7,7 @@ import SwiftUI
 final class AppState: ObservableObject {
     private static let enabledDefaultsKey = "isSleepBlockingEnabled"
     private static let waitingDefaultsKey = "treatWaitingAsActive"
+    private static let displaySleepDefaultsKey = "sleepDisplayOnLidClose"
 
     @Published private(set) var isBlockingSleep = false
     @Published private(set) var helperInstalled = HelperInstaller.isInstalled()
@@ -38,6 +39,14 @@ final class AppState: ObservableObject {
         }
     }
 
+    /// Turn the built-in display off while the lid is closed. On by default: with sleep
+    /// blocked, macOS leaves the panel lit behind a shut lid, which only wastes power.
+    @Published var sleepDisplayOnLidClose: Bool {
+        didSet {
+            UserDefaults.standard.set(sleepDisplayOnLidClose, forKey: Self.displaySleepDefaultsKey)
+        }
+    }
+
     private let sleepController: SleepController
     private var claudeSessions: [AgentSession] = []
     private var codexSessions: [AgentSession] = []
@@ -53,6 +62,7 @@ final class AppState: ObservableObject {
         let defaults = UserDefaults.standard
         self.isEnabled = (defaults.object(forKey: Self.enabledDefaultsKey) as? Bool) ?? true
         self.treatWaitingAsActive = (defaults.object(forKey: Self.waitingDefaultsKey) as? Bool) ?? true
+        self.sleepDisplayOnLidClose = (defaults.object(forKey: Self.displaySleepDefaultsKey) as? Bool) ?? true
 
         claudeMonitor.$sessions
             .sink { [weak self] sessions in

@@ -11,6 +11,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let claudeMonitor = ClaudeSessionMonitor()
     private let codexMonitor = CodexSessionMonitor()
     private let sleepController = SleepController()
+    private lazy var displaySleepController = DisplaySleepController { [weak self] in
+        guard let self else { return false }
+        return self.appState.sleepDisplayOnLidClose && self.appState.isBlockingSleep
+    }
     private lazy var appState = AppState(
         claudeMonitor: claudeMonitor,
         codexMonitor: codexMonitor,
@@ -54,11 +58,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         claudeMonitor.start()
         codexMonitor.start()
+        displaySleepController.start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
         claudeMonitor.stop()
         codexMonitor.stop()
+        displaySleepController.stop()
         appState.shutdown()
     }
 
