@@ -9,8 +9,8 @@ cd "$(dirname "$0")/.."
 
 APP_DISPLAY_NAME="Vibe Awake"
 BUNDLE_ID="com.ychof.vibeawake"
-VERSION="${VERSION:-1.0.0}"
-BUILD_NUMBER="${BUILD_NUMBER:-1}"
+VERSION="${VERSION:-1.0.1}"
+BUILD_NUMBER="${BUILD_NUMBER:-2}"
 # Override with e.g. SIGN_IDENTITY="Developer ID Application: Someone (TEAMID)"
 SIGN_IDENTITY="${SIGN_IDENTITY:-Developer ID Application: kenta yamamoto (LAS46NJ6P7)}"
 

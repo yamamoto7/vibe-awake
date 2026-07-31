@@ -14,7 +14,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 APP_DISPLAY_NAME="Vibe Awake"
-VERSION="${VERSION:-1.0.0}"
+VERSION="${VERSION:-1.0.1}"
 KEYCHAIN_PROFILE="${KEYCHAIN_PROFILE:-AC_PASSWORD}"
 SIGN_IDENTITY="${SIGN_IDENTITY:-Developer ID Application: kenta yamamoto (LAS46NJ6P7)}"
 

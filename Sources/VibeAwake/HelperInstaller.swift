@@ -13,10 +13,13 @@ import Foundation
 /// lid again until the app happened to run. The daemon now also re-checks on a timer, so a
 /// stale request heals itself within a minute even though no file change wakes it.
 enum HelperInstaller {
+    /// The executable name the state file's pid must belong to.
+    static let executableName = "VibeAwake"
+
     /// Bumped whenever the installed script or state format changes. An installed helper with
     /// a different version is treated as not installed, so the user is prompted to re-run
     /// setup instead of silently running an incompatible script.
-    static let helperVersion = "2"
+    static let helperVersion = "3"
 
     static let daemonLabel = "com.ychof.vibeawake.helper"
     static let installDir = "/Library/Application Support/VibeAwake"
@@ -156,7 +159,13 @@ enum HelperInstaller {
           desired=$(read_field desired)
           pid=$(read_field pid)
           ts=$(read_field ts)
-          if [ "$desired" = "1" ] && [ -n "$pid" ] && [ -n "$ts" ] && kill -0 "$pid" 2>/dev/null; then
+          # Check what the pid actually is, not just that something is alive under it. This
+          # runs as root, so `kill -0` succeeds for every process on the system: without the
+          # name check, writing `pid=1` into the state file would pin the flag on. It also
+          # rules out a recycled pid after a reboot landing on an unrelated process.
+          proc=$(/bin/ps -o comm= -p "$pid" 2>/dev/null)
+          proc=${proc##*/}
+          if [ "$desired" = "1" ] && [ -n "$ts" ] && [ "$proc" = "\(executableName)" ]; then
             now=$(/bin/date +%s)
             age=$((now - ts))
             if [ "$age" -lt "$MAX_AGE" ] && [ "$age" -gt -"$MAX_AGE" ]; then
