@@ -2,7 +2,7 @@
   <img src="Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>AI コーディングセッションが動いている間だけ、Mac を寝かせない。</p>
-  <p><a href="README.md">English</a> · 日本語</p>
+  <p><a href="README.md">English</a> · 日本語 · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
 </div>
 
 ```bash
@@ -72,22 +72,22 @@ macOS では、蓋を閉じたときのスリープは管理者権限を持つ�
 
 ## 設定
 
-| 項目 | 説明 |
+| | |
 |---|---|
 | スリープ防止を有効にする | 一時的にオフにできます |
 | ログイン時に自動起動 | Mac の起動時に常駐させます |
-| 承認待ちもスリープ防止の対象にする | スマホなどから遠隔で承認する場合は ON にしてください。OFF にすると承認待ちの間はスリープします |
 | 蓋を閉じたら画面を消す | スリープを防いでいる間、macOS は蓋を閉じても内蔵ディスプレイを点けたままにします。消灯して電力の無駄を防ぎます。外部ディスプレイ接続時は何もしません |
+| 承認待ちもスリープ防止の対象にする | スマホなどから遠隔で承認する場合は ON にしてください。OFF にすると承認待ちの間はスリープします |
+
+## 対応言語
+
+English / 日本語 / 简体中文 / 한국어 / Español / Français / Deutsch / Português (Brasil) / Русский。macOS の言語設定に従います。
 
 ## 注意事項
 
 各 CLI が公開していない内部の状態ファイルを読んで判定しているため、**ツール側のアップデートで動作しなくなる可能性があります**。動かなくなった場合は [Issues](https://github.com/yamamoto7/vibe-awake/issues) で知らせてください。
 
 本ソフトウェアは Anthropic および OpenAI とは無関係の非公式ツールです。Claude、Claude Code、Codex は各社の商標です。
-
-## 対応言語
-
-English / 日本語 / 简体中文 / 한국어 / Español / Français / Deutsch / Português (Brasil) / Русский。macOS の言語設定に従います。
 
 ## ソースからビルドする
 
@@ -102,13 +102,13 @@ swift build                          # 開発用ビルド
 配布用ビルドには Developer ID 証明書が必要です。
 
 ```bash
-./Scripts/build_app.sh --release   # Developer ID 署名 + Hardened Runtime
-./Scripts/notarize.sh              # DMG 作成 + notarization
+./Scripts/build_app.sh --release     # Developer ID 署名 + Hardened Runtime
+./Scripts/notarize.sh                # DMG 作成 + notarization
 ```
 
 ### 翻訳
 
-各言語は `Resources/<lang>.lproj/Localizable.strings` です。英語が開発言語なので、他言語でキーが欠けても英語にフォールバックします(キー名がそのまま出ることはありません)。文字列を触ったら `Scripts/check_localizations.sh` を実行してください。
+各言語は `Resources/<lang>.lproj/Localizable.strings` です。英語が開発言語なので、他言語でキーが欠けても英語にフォールバックします(キー名がそのまま出ることはありません)。`Scripts/check_localizations.sh` は欠落・未使用・未定義のキーを報告します。文字列を触ったら実行してください。
 
 判定ロジックや設計上の判断の理由は、各ソースファイルのコメントに記載しています。
 

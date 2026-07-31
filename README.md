@@ -2,7 +2,7 @@
   <img src="Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>Keeps your Mac awake only while an AI coding session is actually working.</p>
-  <p>English · <a href="README.ja.md">日本語</a></p>
+  <p>English · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
 </div>
 
 ```bash
@@ -108,10 +108,7 @@ Distribution builds need a Developer ID certificate.
 
 ### Translations
 
-Each language is a `Localizable.strings` file under `Resources/<lang>.lproj/`. English is the
-development language, so a key missing elsewhere falls back to it rather than showing the raw
-key. `Scripts/check_localizations.sh` reports keys that are missing, unused or undefined —
-run it after touching any string.
+Each language is a `Localizable.strings` file under `Resources/<lang>.lproj/`. English is the development language, so a key missing elsewhere falls back to it rather than showing the raw key. `Scripts/check_localizations.sh` reports keys that are missing, unused or undefined — run it after touching any string.
 
 The reasoning behind the detection logic and the design decisions lives in the source comments.
 
