@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="Resources/logo.png" width="128" alt="Vibe Awake">
+  <img src="../Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>Hält deinen Mac nur wach, solange eine KI-Coding-Sitzung tatsächlich arbeitet.</p>
-  <p><a href="README.md">English</a> · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · Deutsch · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
+  <p><a href="../README.md">English</a> · <a href="ja.md">日本語</a> · <a href="zh-Hans.md">简体中文</a> · <a href="ko.md">한국어</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a> · Deutsch · <a href="pt-BR.md">Português</a> · <a href="ru.md">Русский</a></p>
 </div>
 
 ```bash
@@ -114,4 +114,4 @@ Die Begründung hinter der Erkennungslogik und den Entwurfsentscheidungen steht 
 
 ## Lizenz
 
-[MIT](LICENSE)
+[MIT](../LICENSE)

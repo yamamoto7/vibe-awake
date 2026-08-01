@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="Resources/logo.png" width="128" alt="Vibe Awake">
+  <img src="../Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>Mantém seu Mac acordado apenas enquanto uma sessão de programação com IA está de fato trabalhando.</p>
-  <p><a href="README.md">English</a> · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · Português · <a href="README.ru.md">Русский</a></p>
+  <p><a href="../README.md">English</a> · <a href="ja.md">日本語</a> · <a href="zh-Hans.md">简体中文</a> · <a href="ko.md">한국어</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a> · <a href="de.md">Deutsch</a> · Português · <a href="ru.md">Русский</a></p>
 </div>
 
 ```bash
@@ -114,4 +114,4 @@ O raciocínio por trás da lógica de detecção e das decisões de projeto est�
 
 ## Licença
 
-[MIT](LICENSE)
+[MIT](../LICENSE)

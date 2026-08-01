@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="Resources/logo.png" width="128" alt="Vibe Awake">
+  <img src="../Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>仅在 AI 编程会话真正工作时阻止 Mac 进入睡眠。</p>
-  <p><a href="README.md">English</a> · <a href="README.ja.md">日本語</a> · 简体中文 · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
+  <p><a href="../README.md">English</a> · <a href="ja.md">日本語</a> · 简体中文 · <a href="ko.md">한국어</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a> · <a href="de.md">Deutsch</a> · <a href="pt-BR.md">Português</a> · <a href="ru.md">Русский</a></p>
 </div>
 
 ```bash
@@ -114,4 +114,4 @@ swift build                          # 开发构建
 
 ## 许可证
 
-[MIT](LICENSE)
+[MIT](../LICENSE)

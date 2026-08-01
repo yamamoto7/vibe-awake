@@ -2,7 +2,7 @@
   <img src="Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>Keeps your Mac awake only while an AI coding session is actually working.</p>
-  <p>English · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · <a href="README.pt-BR.md">Português</a> · <a href="README.ru.md">Русский</a></p>
+  <p>English · <a href="README/ja.md">日本語</a> · <a href="README/zh-Hans.md">简体中文</a> · <a href="README/ko.md">한국어</a> · <a href="README/es.md">Español</a> · <a href="README/fr.md">Français</a> · <a href="README/de.md">Deutsch</a> · <a href="README/pt-BR.md">Português</a> · <a href="README/ru.md">Русский</a></p>
 </div>
 
 ```bash

@@ -3,17 +3,30 @@
 language, so structure (headings, code blocks, links) can never drift between them."""
 import pathlib, sys
 
-LANGS = [("README.md", "English"), ("README.ja.md", "日本語"),
-         ("README.zh-Hans.md", "简体中文"), ("README.ko.md", "한국어"),
-         ("README.es.md", "Español"), ("README.fr.md", "Français"),
-         ("README.de.md", "Deutsch"), ("README.pt-BR.md", "Português"),
-         ("README.ru.md", "Русский")]
+# English stays at the repository root so GitHub renders it; the rest live in README/.
+# That means the two groups need different relative paths back to the repo root, which is
+# what ROOT below is for -- get it wrong and the logo and licence links break silently in
+# eight files at once.
+LANGS = [("en", "English"), ("ja", "日本語"), ("zh-Hans", "简体中文"), ("ko", "한국어"),
+         ("es", "Español"), ("fr", "Français"), ("de", "Deutsch"),
+         ("pt-BR", "Português"), ("ru", "Русский")]
+
+def path_of(code):
+    return "README.md" if code == "en" else f"README/{code}.md"
+
+def link_between(from_code, to_code):
+    """Href from one README to another, both of which may sit at different depths."""
+    if from_code == "en":
+        return path_of(to_code)
+    return "../README.md" if to_code == "en" else f"{to_code}.md"
 
 def switcher(current):
-    return " · ".join(n if f == current else f'<a href="{f}">{n}</a>' for f, n in LANGS)
+    return " · ".join(
+        name if code == current else f'<a href="{link_between(current, code)}">{name}</a>'
+        for code, name in LANGS)
 
 TEMPLATE = """<div align="center">
-  <img src="Resources/logo.png" width="128" alt="Vibe Awake">
+  <img src="{ROOT}Resources/logo.png" width="128" alt="Vibe Awake">
   <h1>Vibe Awake</h1>
   <p>{TAGLINE}</p>
   <p>{SWITCHER}</p>
@@ -128,25 +141,27 @@ swift build                          {C_DEV}
 
 ## {H_LICENSE}
 
-[MIT](LICENSE)
+[MIT]({ROOT}LICENSE)
 """
 
 src_dir = pathlib.Path(sys.argv[1])
 out_dir = pathlib.Path(sys.argv[2])
+(out_dir / "README").mkdir(exist_ok=True)
 
-for src in sorted(src_dir.glob("*.md")):
-    lang = src.stem
+for code, _ in LANGS:
+    src = src_dir / f"{code}.md"
     values = {}
     for raw in src.read_text().splitlines():
         if not raw.strip() or "|" not in raw:
             continue
         k, v = raw.split("|", 1)
         values[k.strip()] = v
-    filename = f"README.{lang}.md"
-    values["SWITCHER"] = switcher(filename)
+    values["SWITCHER"] = switcher(code)
+    values["ROOT"] = "" if code == "en" else "../"
+    target = out_dir / path_of(code)
     try:
-        (out_dir / filename).write_text(TEMPLATE.format(**values))
+        target.write_text(TEMPLATE.format(**values))
     except KeyError as e:
-        print(f"{lang}: missing key {e}")
+        print(f"{code}: missing key {e}")
         continue
-    print(f"wrote {filename}")
+    print(f"wrote {path_of(code)}")
