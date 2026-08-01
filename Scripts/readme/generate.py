@@ -34,6 +34,7 @@ TEMPLATE = """<div align="center">
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
 
@@ -65,8 +66,11 @@ brew install --cask vibe-awake
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
+
+{P_TRUST}
 
 {P_BREW_UPD}
 

@@ -15,6 +15,7 @@ P_REQ|動作環境は **macOS 13 (Ventura) 以降** です。
 H_BREW|Homebrew
 P_BREW_UPD|アップデートとアンインストールも Homebrew から行えます。
 C_UNINSTALL|# ヘルパーもまとめて削除されます
+P_TRUST|Homebrew 6 では、サードパーティのタップを読み込む前に明示的な信頼が必要です。`brew trust` はその同意を記録します。省くと「Refusing to load cask ... from untrusted tap」でインストールが止まります。
 H_MANUAL|手動
 P_MANUAL|[Releases](https://github.com/yamamoto7/vibe-awake/releases) から `.dmg` をダウンロードし、`Vibe Awake.app` を `アプリケーション` フォルダにドラッグしてください。
 H_SETUP|初回セットアップ

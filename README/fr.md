@@ -7,6 +7,7 @@
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
 
@@ -38,8 +39,11 @@ Nécessite **macOS 13 (Ventura) ou ultérieur**.
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
+
+Homebrew 6 exige qu'un tap tiers soit explicitement approuvé avant d'être chargé ; `brew trust` enregistre cet accord. Sans cette étape, l'installation s'arrête sur « Refusing to load cask ... from untrusted tap ».
 
 La mise à jour et la désinstallation passent aussi par Homebrew.
 

@@ -15,6 +15,7 @@ P_REQ|Nécessite **macOS 13 (Ventura) ou ultérieur**.
 H_BREW|Homebrew
 P_BREW_UPD|La mise à jour et la désinstallation passent aussi par Homebrew.
 C_UNINSTALL|# supprime également l'assistant
+P_TRUST|Homebrew 6 exige qu'un tap tiers soit explicitement approuvé avant d'être chargé ; `brew trust` enregistre cet accord. Sans cette étape, l'installation s'arrête sur « Refusing to load cask ... from untrusted tap ».
 H_MANUAL|Manuellement
 P_MANUAL|Téléchargez le `.dmg` depuis [Releases](https://github.com/yamamoto7/vibe-awake/releases) et faites glisser `Vibe Awake.app` dans `Applications`.
 H_SETUP|Configuration

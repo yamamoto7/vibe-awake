@@ -7,6 +7,7 @@
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
 
@@ -38,8 +39,11 @@ Claude Code や Codex CLI に長い作業を任せて席を離れると、Mac �
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
+
+Homebrew 6 では、サードパーティのタップを読み込む前に明示的な信頼が必要です。`brew trust` はその同意を記録します。省くと「Refusing to load cask ... from untrusted tap」でインストールが止まります。
 
 アップデートとアンインストールも Homebrew から行えます。
 

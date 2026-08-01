@@ -7,6 +7,7 @@
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
 
@@ -38,8 +39,11 @@ brew install --cask vibe-awake
 
 ```bash
 brew tap yamamoto7/tap
+brew trust yamamoto7/tap
 brew install --cask vibe-awake
 ```
+
+Homebrew 6 要求第三方 tap 必须先被显式信任才会加载，`brew trust` 就是记录这一授权。省略这一步会导致安装中断并提示「Refusing to load cask ... from untrusted tap」。
 
 更新和卸载同样通过 Homebrew 完成。
 
