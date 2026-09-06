@@ -2,7 +2,8 @@ import Foundation
 import Combine
 
 /// Reads the status files Claude Code maintains at `~/.claude/sessions/<pid>.json` -- one per
-/// running interactive session, updated on every state transition. This is a far more exact
+/// running session, interactive or a detached background agent, updated on every state
+/// transition. This is a far more exact
 /// signal than watching processes or CPU: it distinguishes "generating a response" from
 /// "sitting at the prompt", and it stays correct through Ctrl+C, API errors and slash
 /// commands, all of which leave lifecycle hooks with no matching end event.
@@ -52,8 +53,14 @@ final class ClaudeSessionMonitor: ObservableObject {
                 let raw = try? JSONDecoder().decode(SessionFile.self, from: data)
             else { continue }
 
-            // Only interactive TUI sessions register here; headless `claude -p` runs don't.
-            guard raw.kind == nil || raw.kind == "interactive" else { continue }
+            // Interactive TUI sessions, plus the detached `bg` agents they spawn: those run in
+            // their own process with their own status file, and are the only thing reporting
+            // `busy` while the session that launched them sits parked at `idle`. Headless
+            // `claude -p` runs don't register at all. A `bg` process straight out of the spare
+            // pool carries `spare: true` and hasn't picked up any work yet; the flag is cleared
+            // the moment it claims a job and goes busy.
+            let kind = raw.kind ?? "interactive"
+            guard kind == "interactive" || (kind == "bg" && raw.spare != true) else { continue }
             guard ProcessProbe.isAlive(pid: raw.pid) else { continue }
 
             let name = raw.name ?? URL(fileURLWithPath: raw.cwd ?? "").lastPathComponent
@@ -93,6 +100,7 @@ final class ClaudeSessionMonitor: ObservableObject {
         let cwd: String?
         let name: String?
         let kind: String?
+        let spare: Bool?
         let status: String?
     }
 }
